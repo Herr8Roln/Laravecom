@@ -55,4 +55,5 @@ Route::resource('carts', CartController::class)->middleware('auth');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
 Route::get('/cash_order', [HomeController::class, 'cash_order'])->name('cash.order')->middleware('auth');
-
+Route::get('/stripe/{totalPrice}', [HomeController::class, 'stripe'])->name('stripe')->middleware('auth');
+Route::post('stripe', [HomeController::class, 'stripePost'])->name('stripe.post');

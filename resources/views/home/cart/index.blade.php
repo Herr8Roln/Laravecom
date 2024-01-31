@@ -111,7 +111,7 @@
                                 <h2 style="font-size: 25px;padding-bottom: 15px;">Proceed to Order</h2>
                                 <a href="{{ route('cash.order') }}" class="btn btn-danger">Cash On Delivery</a>
                                 <br>
-                                <a href="" class="btn btn-danger">Pay Using Card</a>
+                                <a href="{{ route('stripe',$totalPrice) }}" class="btn btn-danger">Pay Using Card</a>
                             </div>
                     </div>
                 </div>

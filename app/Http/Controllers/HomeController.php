@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
+
+use Stripe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -74,4 +77,24 @@ public function cash_order()
     // Redirect to a meaningful page or provide a feedback message
     return redirect()->back()->with('message', 'we have Received Your Order. We will contact you soon');
 }
+public function stripe($totalprice) {
+    return view('home.stripe',compact('totalprice'));
 }
+public function stripePost(Request $request)
+{
+    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    Stripe\Charge::create ([
+            "amount" => 100 * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Payment made successfully"
+    ]);
+
+    Session::flash('success', 'Payment successful!');
+
+    return back();
+}
+}
+
+

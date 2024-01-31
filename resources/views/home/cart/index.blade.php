@@ -46,15 +46,15 @@
                                 <tr>
                                     <td>{{ $item->product_title}}</td>
                                     <td>
-                                        @if($item->image)
-                                        <img src="{{ asset('storage/' . $item->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+                                        @if($item->picture)
+                                        <img src="{{ asset('storage/' . $item->picture) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
                                         @else
                                             No Image
                                         @endif
                                         <td style="width: 200px;">
                                             <form action="{{ route('carts.update', ['cart' => $item->id]) }}" method="post">
                                                 @csrf
-                                                @method('PUT') <!-- Use PUT method for update -->
+                                                @method('PUT')
                                                 {{ $item->quantity }}
                                                 <div class="row">
                                                     <div class="col-md-4">
@@ -71,15 +71,18 @@
                                                 </div>
                                             </form>
                                         </td>
-                                    <td>{{ $item->product->description }}</td>
+                                    <td>{{ $item->product->description ?? 'N/A' }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>
-                                        @if($item->product->category && $item->product->category->icon)
+                                        {{-- Debugging statements --}}
+                                        {{ dd($item->product, $item->product ? $item->product->category : null) }}
+                                        @if($item->product->category_id)
                                             <img src="{{ asset('storage/' . $item->product->category->icon) }}" alt="Category Icon" class="img-fluid" style="max-width: 50px; max-height: 50px;">
                                         @else
                                             No Category Icon
                                         @endif
                                     </td>
+
                                         <td>
                                             <a href="{{ route('product.details', $item->product_id) }}" title="View product" style="text-decoration: none;">
                                                 <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button>

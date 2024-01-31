@@ -13,8 +13,10 @@ class Category extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name','icon'];
 
+  // Category model
     public function products()
     {
         return $this->hasMany(Product::class);
     }
+
 }

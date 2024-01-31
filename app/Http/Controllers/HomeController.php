@@ -80,12 +80,12 @@ public function cash_order()
 public function stripe($totalprice) {
     return view('home.stripe',compact('totalprice'));
 }
-public function stripePost(Request $request)
+public function stripePost(Request $request, $totalprice)
 {
     Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
     Stripe\Charge::create ([
-            "amount" => 100 * 100,
+            "amount" => $totalprice * 100,
             "currency" => "usd",
             "source" => $request->stripeToken,
             "description" => "Payment made successfully"

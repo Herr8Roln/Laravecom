@@ -32,7 +32,6 @@
                                         <th>Product</th>
                                         <th>Image</th>
                                         <th >Quantity</th>
-                                        <th>Description</th>
                                         <th>Price</th>
                                         <th>Category</th>
                                         <th style="width: 180px">Actions</th>
@@ -71,11 +70,9 @@
                                                 </div>
                                             </form>
                                         </td>
-                                    <td>{{ $item->product->description ?? 'N/A' }}</td>
                                     <td>{{ $item->price }}</td>
-                                    <td>
-                                        {{-- Debugging statements --}}
-                                        {{ dd($item->product, $item->product ? $item->product->category : null) }}
+
+                                  <td>
                                         @if($item->product->category_id)
                                             <img src="{{ asset('storage/' . $item->product->category->icon) }}" alt="Category Icon" class="img-fluid" style="max-width: 50px; max-height: 50px;">
                                         @else

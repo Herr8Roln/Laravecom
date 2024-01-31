@@ -36,7 +36,7 @@ class CartController extends Controller
             'product_title' => $product->name,
             'price' => $product->discount_price ?? $product->price,
             'picture' => $product->picture,
-            'product_id' => $product->id,
+            'product_id' => $id,
             'quantity' => $request->quantity,
         ]);
 
@@ -64,7 +64,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         $cart = Cart::findOrFail($id);
-        $this->authorize('delete', $cart);
+  
 
         $cart->delete();
 

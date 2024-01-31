@@ -28,6 +28,7 @@
                         </div>
                         <div class="detail-box">
                             <h5>{{ $products->name }}</h5>
+                      
                         </div>
                         <div class="img-box">
                             <img src="{{ asset('storage/' . $products->picture) }}" alt="Product Image" >

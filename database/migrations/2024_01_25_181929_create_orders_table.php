@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('user_id')->nullable();
             $table->string('product_title')->nullable(); $table->string('quantity')->nullable();
             $table->string('price')->nullable();
-            $table->string('image')->nullable();
+            $table->string('picture')->nullable();
             $table->string('product_id')->nullable();
             $table->string('payment_status')->nullable();
             $table->string('delivery_status')->nullable();

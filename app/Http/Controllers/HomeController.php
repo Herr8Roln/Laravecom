@@ -80,7 +80,7 @@ public function cash_order()
 public function stripe($totalprice) {
     return view('home.stripe',compact('totalprice'));
 }
-public function stripePost(Request $request, $totalprice)
+public function stripePost(Request $request, $totalprice) //up to date
 {
     Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -90,6 +90,29 @@ public function stripePost(Request $request, $totalprice)
             "source" => $request->stripeToken,
             "description" => "Payment made successfully"
     ]);
+    $user = Auth::user();
+    $userId = $user->id;
+
+    $cartItems = Cart::where('user_id', $userId)->get();
+
+    foreach ($cartItems as $cartItem) {
+        Order::create([
+            'name' => $cartItem->name,
+            'email' => $cartItem->email,
+            'phone' => $cartItem->phone,
+            'address' => $cartItem->address,
+            'user_id' => $cartItem->user_id,
+            'product_title' => $cartItem->product_title,
+            'price' => $cartItem->price,
+            'quantity' => $cartItem->quantity,
+            'image' => $cartItem->picture,
+            'product_id' => $cartItem->product_id,
+            'payment_status' => 'Paid with credit card',
+            'delivery_status' => 'processing',
+        ]);
+    }
+    Cart::where('user_id', $userId)->delete();
+
 
     Session::flash('success', 'Payment successful!');
 

@@ -18,7 +18,7 @@ class Order extends Model
         'product_title',
         'price',
         'quantity',
-        'image',
+        'picture',
         'product_id',
         'payment_status',
         'delivery_status',

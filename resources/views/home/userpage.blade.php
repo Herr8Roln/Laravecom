@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <head>
    @include('home.head')
+    </head>
    <body>
       <div class="hero_area">
         @include('home.header');

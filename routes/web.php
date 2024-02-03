@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         // Products CRUD
         Route::resource('products', ProductController::class);
+        // Order CRUD
+        Route::resource('orders', OrderController::class);
     });
 });
 

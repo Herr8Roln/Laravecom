@@ -1,1 +1,215 @@
-<div class="Card-root Card--radius--all Box-root Box-background--white" style="border: 1px solid var(--sail-color-line-keyline); border-radius: 8px; margin-top: 20px;"><div class="PaymentElementDemo-navbar Box-root Box-divider--light-bottom-1 Padding-all--12" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--center Flex-wrap--wrap" style="margin-left: -20px; margin-top: -20px;"><div class="Box-root Box-hideIfEmpty Margin-top--20 Margin-left--20" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -8px; margin-top: -8px;"><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><span class="Text-color--gray Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--wrap Text-display--inline">Pays du client</span></div><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -4px; margin-top: -4px;"><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div title="US" class="SVGInline SVGInline--cleaned SVG Box-root Flex-flex"><svg class="SVGInline-svg SVGInline--cleaned-svg SVG-svg" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd"><path fill="#E25950" fill-rule="nonzero" d="M14 14H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"></path><path fill="#F6F9FC" fill-rule="nonzero" d="M0 11h16v1H0v-1Zm14 3H2a2 2 0 0 1-1.732-1h15.464A2 2 0 0 1 14 14ZM0 9h16v1H0V9Zm8-2h8v1H8V7Zm0-2h8v1H8V5Zm0-2h7.723c.171.295.277.634.277 1H8V3Z"></path><path fill="#E25950" fill-rule="nonzero" d="M14 14H2a2 2 0 0 1-2-2V8h1v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8V2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z" opacity="0.1"></path><path fill="#43458B" fill-rule="nonzero" d="M0 8V3.714C0 2.768.796 2 1.778 2H8v6H0Z"></path><path fill="#FFF" fill-rule="nonzero" d="M7.026 5.501a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM5.518 5a.5.5 0 1 1-.038-1 .5.5 0 0 1 .038 1Zm-.492.501a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM3.518 5a.5.5 0 1 1-.038-1 .5.5 0 0 1 .038 1Zm-.492.501a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm4-2a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm-1.507 1.5a.5.5 0 1 1-.038-.999.5.5 0 0 1 .038 1Zm.014 1A.5.5 0 1 1 1.57 7a.5.5 0 0 1-.037-1Zm2 0A.5.5 0 1 1 3.57 7a.5.5 0 0 1-.037-1Zm2 0A.5.5 0 1 1 5.57 7a.5.5 0 0 1-.037-1Z"></path><path fill="#FFF" d="M6.533 7a.5.5 0 1 1 .037 1 .5.5 0 0 1-.037-1Zm-2 0a.5.5 0 1 1 .037 1 .5.5 0 0 1-.037-1Zm-2 0a.5.5 0 1 1 .037 1 .5.5 0 0 1-.037-1ZM.482 7a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm0-2a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm0-2a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm1-1a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm2 0a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm2 0a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm2 0a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm0 2a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Zm0 2a.5.5 0 1 1 .036 1 .5.5 0 0 1-.036-1Z" opacity="0.5"></path></g></svg></div></div><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div class="Box-root Flex-flex"><div class="Box-root Flex-flex"><button aria-controls="menu5" aria-haspopup="menu" id="menu5-button" class="UnstyledLink ButtonLink IconParent Flex-flex" type="button"><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed" style="position: relative;"><div aria-hidden="true" class="TextAligner Box-root" style="line-height: 20px; font-size: 14px; flex: 0 0 auto;"></div><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed Flex-justifyContent--flexStart" style="line-height: 0; flex: 1 1 auto;"><div aria-hidden="true" class="SVGInline SVGInline--cleaned SVG Icon Icon--chevronDown Icon-color Icon-color--blue Box-root Margin-left--4 Flex-flex" style="transform: translateY(1.1px);"><svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--chevronDown-svg Icon-color-svg Icon-color--blue-svg" height="12" width="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.381 4.381a.875.875 0 0 1 1.238 0L8 10.763l6.381-6.382A.875.875 0 1 1 15.62 5.62l-7 7a.875.875 0 0 1-1.238 0l-7-7a.875.875 0 0 1 0-1.238Z"></path></svg></div><span class="ButtonLink-label Text-color--blue Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--noWrap Text-display--block" style="margin-top: -1px;">United States (USD)</span></div></div></button></div></div></div></div></div></div></div></div></div><div class="Box-root Box-hideIfEmpty Margin-top--20 Margin-left--20" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -8px; margin-top: -8px;"><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><span class="Text-color--gray Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--wrap Text-display--inline">Taille</span></div><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -4px; margin-top: -4px;"><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div class="SVGInline SVGInline--cleaned SVG Icon-color Icon-color--gray600 Box-root Flex-flex"><svg class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-color-svg Icon-color--gray600-svg" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.333 2C14.253 2 15 2.716 15 3.6v7.8c0 .884-.746 1.6-1.667 1.6H11l.566 1.132a.6.6 0 0 1-.537.868H4.971a.6.6 0 0 1-.537-.868L5 13H2.667C1.747 13 1 12.284 1 11.4V3.6C1 2.716 1.746 2 2.667 2h10.666Zm.267 2H2.4a.4.4 0 0 0-.4.4v6.2c0 .22.18.4.4.4h11.2a.4.4 0 0 0 .4-.4V4.4a.4.4 0 0 0-.4-.4Z"></path></svg></div></div><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div class="Box-root Flex-flex"><div class="Box-root Flex-flex"><button aria-controls="menu6" aria-haspopup="menu" id="menu6-button" class="UnstyledLink ButtonLink IconParent Flex-flex" type="button"><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed" style="position: relative;"><div aria-hidden="true" class="TextAligner Box-root" style="line-height: 20px; font-size: 14px; flex: 0 0 auto;"></div><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed Flex-justifyContent--flexStart" style="line-height: 0; flex: 1 1 auto;"><div aria-hidden="true" class="SVGInline SVGInline--cleaned SVG Icon Icon--chevronDown Icon-color Icon-color--blue Box-root Margin-left--4 Flex-flex" style="transform: translateY(1.1px);"><svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--chevronDown-svg Icon-color-svg Icon-color--blue-svg" height="12" width="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.381 4.381a.875.875 0 0 1 1.238 0L8 10.763l6.381-6.382A.875.875 0 1 1 15.62 5.62l-7 7a.875.875 0 0 1-1.238 0l-7-7a.875.875 0 0 1 0-1.238Z"></path></svg></div><span class="ButtonLink-label Text-color--blue Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--noWrap Text-display--block" style="margin-top: -1px;">Desktop</span></div></div></button></div></div></div></div></div></div></div></div></div><div class="Box-root Box-hideIfEmpty Margin-top--20 Margin-left--20" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -8px; margin-top: -8px;"><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><span class="Text-color--gray Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--wrap Text-display--inline">Thème</span></div><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -4px; margin-top: -4px;"><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div class="Box-root Flex-flex"><div class="Box-root Flex-flex"><button aria-controls="menu7" aria-haspopup="menu" id="menu7-button" class="UnstyledLink ButtonLink IconParent Flex-flex" type="button"><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed" style="position: relative;"><div aria-hidden="true" class="TextAligner Box-root" style="line-height: 20px; font-size: 14px; flex: 0 0 auto;"></div><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed Flex-justifyContent--flexStart" style="line-height: 0; flex: 1 1 auto;"><div aria-hidden="true" class="SVGInline SVGInline--cleaned SVG Icon Icon--chevronDown Icon-color Icon-color--blue Box-root Margin-left--4 Flex-flex" style="transform: translateY(1.1px);"><svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--chevronDown-svg Icon-color-svg Icon-color--blue-svg" height="12" width="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.381 4.381a.875.875 0 0 1 1.238 0L8 10.763l6.381-6.382A.875.875 0 1 1 15.62 5.62l-7 7a.875.875 0 0 1-1.238 0l-7-7a.875.875 0 0 1 0-1.238Z"></path></svg></div><span class="ButtonLink-label Text-color--blue Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--noWrap Text-display--block" style="margin-top: -1px;">Default</span></div></div></button></div></div></div></div></div></div></div></div></div><div class="Box-root Box-hideIfEmpty Margin-top--20 Margin-left--20" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -8px; margin-top: -8px;"><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><span class="Text-color--gray Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--wrap Text-display--inline">Disposition</span></div><div class="Box-root Box-hideIfEmpty Margin-top--8 Margin-left--8" style="pointer-events: auto;"><div class="Box-root" style="pointer-events: none;"><div class="Box-root Flex-flex Flex-alignItems--center Flex-direction--row Flex-justifyContent--flexStart Flex-wrap--nowrap" style="margin-left: -4px; margin-top: -4px;"><div class="Box-root Box-hideIfEmpty Margin-top--4 Margin-left--4" style="pointer-events: auto;"><div class="Box-root Flex-flex"><div class="Box-root Flex-flex"><button aria-controls="menu8" aria-haspopup="menu" id="menu8-button" class="UnstyledLink ButtonLink IconParent Flex-flex" type="button"><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed" style="position: relative;"><div aria-hidden="true" class="TextAligner Box-root" style="line-height: 20px; font-size: 14px; flex: 0 0 auto;"></div><div class="Box-root Flex-flex Flex-alignItems--baseline Flex-direction--rowReversed Flex-justifyContent--flexStart" style="line-height: 0; flex: 1 1 auto;"><div aria-hidden="true" class="SVGInline SVGInline--cleaned SVG Icon Icon--chevronDown Icon-color Icon-color--blue Box-root Margin-left--4 Flex-flex" style="transform: translateY(1.1px);"><svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--chevronDown-svg Icon-color-svg Icon-color--blue-svg" height="12" width="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.381 4.381a.875.875 0 0 1 1.238 0L8 10.763l6.381-6.382A.875.875 0 1 1 15.62 5.62l-7 7a.875.875 0 0 1-1.238 0l-7-7a.875.875 0 0 1 0-1.238Z"></path></svg></div><span class="ButtonLink-label Text-color--blue Text-fontSize--14 Text-fontWeight--medium Text-lineHeight--20 Text-numericSpacing--proportional Text-typeface--base Text-wrap--noWrap Text-display--block" style="margin-top: -1px;">Tabs</span></div></div></button></div></div></div></div></div></div></div></div></div></div></div><div class="Box-root Box-background--offset Flex-flex Flex-alignItems--flexStart Flex-justifyContent--center" style="min-height: 500px;"><div dir="ltr" class="PaymentElement-demo Box-root Margin-vertical--64 Padding-all--12" style="max-width: 510px; flex-basis: 100%;"><div class="StripeElement"><div class="__PrivateStripeElement" style="margin: -4px 0px !important; padding: 0px !important; border: none !important; display: block !important; background: transparent !important; position: relative !important; opacity: 1 !important; clear: both !important; transition: height 0.35s ease 0s !important;"><iframe name="__privateStripeFrame1747" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *; publickey-credentials-get *" src="https://js.stripe.com/v3/elements-inner-payment-5b2f42a90418ba67fdadaef863368b72.html#wait=false&amp;rtl=false&amp;publicOptions[paymentMethodOrder][0]=card&amp;publicOptions[paymentMethodOrder][1]=google_pay&amp;publicOptions[paymentMethodOrder][2]=apple_pay&amp;publicOptions[paymentMethodOrder][3]=link&amp;publicOptions[paymentMethodOrder][4]=klarna&amp;publicOptions[paymentMethodOrder][5]=affirm&amp;publicOptions[paymentMethodOrder][6]=cashapp&amp;publicOptions[paymentMethodOrder][7]=afterpay_clearpay&amp;publicOptions[paymentMethodOrder][8]=us_bank_account&amp;publicOptions[paymentMethodOrder][9]=wechat_pay&amp;publicOptions[business][name]=Stripe+Payment+Element+Demo&amp;publicOptions[layout]=tabs&amp;componentName=payment&amp;keyMode=test&amp;apiKey=pk_test_51Kj7bFIIpTIg11XJtvE76RnimbYycRpo2k8sXpjmKln27syw2XrJInmFJDC3QITWhbZYsQ8xtz5f24qHS1UTd7u600zZqhHYxF&amp;referrer=https%3A%2F%2Fstripe.com%2Fdocs%2Fpayments%2Fpayment-element&amp;controllerId=__privateStripeController1741" title="Secure payment input frame" style="border: none !important; margin: -4px; padding: 0px !important; width: calc(100% + 8px); min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; color-scheme: light only !important; height: 317.9px; opacity: 1; transition: height 0.35s ease 0s, opacity 0.4s ease 0.1s;"></iframe><iframe name="__privateStripeFrame17412" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="https://js.stripe.com/v3/elements-inner-ach-bank-search-results-c2e0b342bf98530e450a65cef09edfb1.html#wait=false&amp;rtl=false&amp;publicOptions[paymentMethodOrder][0]=card&amp;publicOptions[paymentMethodOrder][1]=google_pay&amp;publicOptions[paymentMethodOrder][2]=apple_pay&amp;publicOptions[paymentMethodOrder][3]=link&amp;publicOptions[paymentMethodOrder][4]=klarna&amp;publicOptions[paymentMethodOrder][5]=affirm&amp;publicOptions[paymentMethodOrder][6]=cashapp&amp;publicOptions[paymentMethodOrder][7]=afterpay_clearpay&amp;publicOptions[paymentMethodOrder][8]=us_bank_account&amp;publicOptions[paymentMethodOrder][9]=wechat_pay&amp;publicOptions[business][name]=Stripe+Payment+Element+Demo&amp;publicOptions[layout]=tabs&amp;controllingElement=paymentElement&amp;componentName=achBankSearchResults&amp;keyMode=test&amp;apiKey=pk_test_51Kj7bFIIpTIg11XJtvE76RnimbYycRpo2k8sXpjmKln27syw2XrJInmFJDC3QITWhbZYsQ8xtz5f24qHS1UTd7u600zZqhHYxF&amp;referrer=https%3A%2F%2Fstripe.com%2Fdocs%2Fpayments%2Fpayment-element&amp;controllerId=__privateStripeController1741" title="Bank search results" aria-hidden="true" tabindex="-1" style="border: none !important; margin: -4px; padding: 0px !important; width: calc(100% + 8px); min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; color-scheme: light only !important; height: 4px; top: 0px; pointer-events: none; position: absolute; z-index: 1; transition: height 0.35s ease 0s, opacity 0.4s ease 0.1s;"></iframe></div></div></div></div></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #background {
+            background-image: url('/home/images/background.jpg');
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Set a semi-transparent white background for the card */
+        }
+
+        .text-center {
+            color: white; /* Set the text color to white */
+        }
+    </style>
+    @include('home.head')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+</head>
+<body>
+    @include('home.header');
+    <div class="hero_area" id="background">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center text-white">Payment Method</h2>
+                    <br>
+                    <div class="card">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <span>Credit card</span>
+                                                <div class="icons">
+                                                    <img src="/home/images/stripe.png" width="30">
+                                                    <img src="/home/images/visa.png" width="30">
+                                                    <img src="/home/images/mc2.png" width="30">
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body payment-card-body">
+
+                                        <!-- Display Laravel Validation Errors -->
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
+                                        <form method="POST" action="{{ route('stripe.post', ['totalPrice' => $totalprice]) }}"  class="require-validation"
+                                            data-cc-on-file="false"
+                                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                                            id="payment-form">
+                                            @csrf
+
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body payment-card-body">
+                                                    <div class="form-row row">
+                                                        <div class="col-xs-12 col-md-6 form-group required">
+                                                            <label class="control-label">Name on Card</label>
+                                                            <input class="form-control" name="name" size="4" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row row">
+                                                        <div class="col-xs-12 col-md-6 form-group card required">
+                                                            <label class="control-label">Card Number</label>
+                                                            <input autocomplete="off" name="cardnumber" class="form-control card-number" size="20" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row row">
+                                                        <div class="col-xs-12 col-md-4 form-group cvc required">
+                                                            <label class="control-label">CVC</label>
+                                                            <input autocomplete="off" class="form-control card-cvc" placeholder="ex. 311" size="4" type="text">
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-4 form-group expiration required">
+                                                            <label class="control-label">Expiration Month</label>
+                                                            <input class="form-control card-expiry-month" placeholder="MM" size="2" type="text">
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-4 form-group expiration required">
+                                                            <label class="control-label">Expiration Year</label>
+                                                            <input class="form-control card-expiry-year" placeholder="YYYY" size="4" type="text">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                <div class="row" style="text-align: center;">
+                                                <div class="col-xs-12">
+                                                    <button style="width :200px" type="submit" class="btn btn-danger" name="" >Pay Now</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <br>
+
+
+                                        <!-- Display Success Message -->
+                                        @if(session('success'))
+                                            <div class="alert alert-success mt-3">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    @include('home.footer');
+    <div class="cpy_"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="/home/js/jquery-3.4.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="/home/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="/home/js/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="/home/js/custom.js"></script>
+</body>
+<script type="text/javascript">
+
+    $(function() {
+
+        /*------------------------------------------
+        --------------------------------------------
+        Stripe Payment Code
+        --------------------------------------------
+        --------------------------------------------*/
+
+        var $form = $(".require-validation");
+
+        $('form.require-validation').bind('submit', function(e) {
+            $(this).find('button[type="submit"]').prop('disabled', true);
+            var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                             'input[type=text]', 'input[type=file]',
+                             'textarea'].join(', '),
+            $inputs = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid = true;
+            $errorMessage.addClass('hide');
+
+            $('.has-error').removeClass('has-error');
+            $inputs.each(function(i, el) {
+              var $input = $(el);
+              if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+              }
+            });
+
+            if (!$form.data('cc-on-file')) {
+              e.preventDefault();
+              Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+              Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+              }, stripeResponseHandler);
+            }
+
+        });
+
+        /*------------------------------------------
+        --------------------------------------------
+        Stripe Response Handler
+        --------------------------------------------
+        --------------------------------------------*/
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('.error')
+                    .removeClass('hide')
+                    .find('.alert')
+                    .text(response.error.message);
+            } else {
+                /* token contains id, last4, and card type */
+                var token = response['id'];
+
+                $form.find('input[type=text]').empty();
+                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                $form.get(0).submit();
+            }
+        }
+
+
+
+    });
+    </script>
+</html>

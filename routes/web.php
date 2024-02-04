@@ -51,7 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::resource('products', ProductController::class);
         // Order CRUD
         Route::resource('orders', OrderController::class);
-        Route::put('orders/{id}/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
+        Route::put('/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
     });
 });
 

@@ -5,6 +5,10 @@
 
     @include('admin.css')
     <style type="text/css">
+        .button-container {
+            display: flex;
+            gap: 10px; /* Adjust the value to set the desired space between buttons */
+        }
         .div_center {
             text-align: center;
             padding-top: 40px;
@@ -89,21 +93,28 @@
                                                                 <td>{{ $order->product_id }}</td>
                                                                 <td>{{ $order->payment_status }}</td>
                                                                 <td>{{ $order->delivery_status }}</td>
-                                                                <td>
+                                                                <td class="button-container">
+                                                                    @if($order->delivery_status == 'processing')
+                                                                        <form action="{{ route('orders.delivered', ['id' => $order->id]) }}" method="POST">
+                                                                            @method('PUT')
+                                                                            @csrf
+                                                                            <input type="hidden" name="_method" value="PUT">
+                                                                            <button type="submit" onclick="return confirm('Are you sure the product is delivered?')" class="btn btn-success btn-sm">
+                                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Deliver
+                                                                            </button>
+                                                                        </form>
 
-                                                                    <form action="{{ route('orders.delivered', ['id' => $order->id]) }}" method="POST">
-                                                                        @method('PUT')
-                                                                        <input type="hidden" name="_method" value="PUT">
-                                                                        <button type="submit" class="btn btn-success btn-sm">
-                                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Deliver
-                                                                        </button>
-                                                                    </form>
+                                                                        <form method="POST" action="{{ route('orders.destroy', $order->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                                            @method("DELETE")
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete order" onclick="return confirm('Confirm delete?')">
+                                                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                                            </button>
+                                                                        </form>
+                                                                    @else
+                                                                        <p style="color: green">Delivered</p>
 
-                                                                    <form method="POST" action="{{ route('orders.destroy', $order->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                                        @method("DELETE")
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete order" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                                                    </form>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         @endforeach

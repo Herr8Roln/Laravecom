@@ -57,9 +57,10 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         $order->delivery_status="delivered";
+        $order->payment_status= "Paid";
         $order->save();
 
-     
+
         return redirect()->back();
     }
 

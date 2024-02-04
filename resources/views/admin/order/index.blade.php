@@ -90,8 +90,14 @@
                                                                 <td>{{ $order->payment_status }}</td>
                                                                 <td>{{ $order->delivery_status }}</td>
                                                                 <td>
-                                                                    
-                                                                    <a href="{{ route('orders.delivered', $order->id) }}" title="Edit order"><button class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Deliver</button></a>
+
+                                                                    <form action="{{ route('orders.delivered', ['id' => $order->id]) }}" method="POST">
+                                                                        @method('PUT')
+                                                                        <input type="hidden" name="_method" value="PUT">
+                                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Deliver
+                                                                        </button>
+                                                                    </form>
 
                                                                     <form method="POST" action="{{ route('orders.destroy', $order->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                         @method("DELETE")

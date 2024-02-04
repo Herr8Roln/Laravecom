@@ -59,7 +59,7 @@ class OrderController extends Controller
         $order->delivery_status="delivered";
         $order->save();
 
-        $flash_message = 'Order Updated!';
+     
         return redirect()->back();
     }
 

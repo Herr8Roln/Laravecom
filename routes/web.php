@@ -52,6 +52,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Order CRUD
         Route::resource('orders', OrderController::class);
         Route::put('/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
+        Route::get('/print_pdf/{id}', [OrderController::class, 'print_pdf'])->name('print_pdf');
     });
 });
 

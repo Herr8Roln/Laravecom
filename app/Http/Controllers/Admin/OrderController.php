@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class OrderController extends Controller
 {
@@ -76,5 +78,14 @@ class OrderController extends Controller
 
         $flash_message = 'Order Deleted!';
         return redirect()->route('orders.index', compact('flash_message'));
+    }
+    public function print_pdf($id) {
+        $order = Order::findOrFail($id);
+
+        // Pass the order data to the view
+        $pdf = PDF::loadView('admin.order.pdf', compact('order'));
+
+        // Use 'download()' instead of 'download'
+        return $pdf->download('order_details.pdf');
     }
 }

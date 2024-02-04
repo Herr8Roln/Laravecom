@@ -116,6 +116,9 @@
 
                                                                     @endif
                                                                 </td>
+                                                                <td>
+                                                                    <a href="{{ route('print_pdf',$order->id) }}" class="btn btn-secondary">Print PDF</a>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

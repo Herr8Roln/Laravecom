@@ -80,12 +80,56 @@ class OrderController extends Controller
         return redirect()->route('orders.index', compact('flash_message'));
     }
     public function print_pdf($id) {
+        // Fetch data for the PDF
         $order = Order::findOrFail($id);
 
-        // Pass the order data to the view
-        $pdf = PDF::loadView('admin.order.pdf', compact('order'));
+        // Create an instance of TCPDF
+        $pdf = new \TCPDF();
 
-        // Use 'download()' instead of 'download'
-        return $pdf->download('order_details.pdf');
+        // Set document information
+        $pdf->SetCreator('Your Application');
+        $pdf->SetAuthor('Your Name');
+        $pdf->SetTitle('Order Details');
+        $pdf->SetSubject('Order Details');
+        $pdf->SetKeywords('Order, Details');
+
+        // Add a page to the PDF
+        $pdf->AddPage();
+
+        // Set font
+        $pdf->SetFont('times', 'B', 12);
+
+        // Add logo to the top left
+        $logoPath = public_path('home/images/logo.png');
+        $pdf->Image($logoPath, 10, 10, 30, 30, 'PNG');
+
+        // Add text to the top right
+        $pdf->SetX(-60);
+        $pdf->Cell(0, 10, 'Administration Document', 0, 1, 'R');
+
+        // Add title in the center
+        $pdf->Ln(30);
+        $pdf->Cell(0, 10, 'Order Bill', 0, 1, 'C');
+        $pdf->Ln(10);
+
+        // Add order details in a table
+        $pdf->SetFont('times', '', 12);
+        $pdf->Cell(0, 10, 'Order ID: ' . $order->id, 0, 1);
+        $pdf->Cell(0, 10, 'Customer Name: ' . $order->name, 0, 1);
+        $pdf->Cell(0, 10, 'Email: ' . $order->email, 0, 1);
+        $pdf->Cell(0, 10, 'Phone: ' . $order->phone, 0, 1);
+        $pdf->Cell(0, 10, 'Address: ' . $order->address, 0, 1);
+        $pdf->Cell(0, 10, 'Product: ' . $order->product_title, 0, 1);
+        $pdf->Cell(0, 10, 'Quantity: ' . $order->quantity, 0, 1);
+        $pdf->Cell(0, 10, 'Price: ' . $order->price, 0, 1);
+
+        // Add more cells for other order details...
+
+        // Add image at the bottom
+        $imagePath = public_path('storage/' . $order->picture);
+        $pdf->Image($imagePath, 10, $pdf->GetY() + 10, 60, 60, 'PNG');
+
+        // Output the PDF to the browser for download
+        $pdf->Output('order_details.pdf', 'D');
     }
 }

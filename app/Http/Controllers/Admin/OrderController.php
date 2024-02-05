@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Notification;
+
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade as PDF;
-
 
 class OrderController extends Controller
 {
@@ -138,6 +140,22 @@ class OrderController extends Controller
     public function send_email($id) {
 
     $order=Order::find($id);
-    return view('admin.email_info', compact('order'));
+    return view('admin.order.email_info', compact('order'));
     }
+    public function send_user_email(Request $request, $id) {
+        $order = Order::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'firstline' => $request->firstline,
+            'body' => $request->body,  // Fix: Change '>=' to '='
+            'button' => $request->button,  // Fix: Change '>=' to '='
+            'url' => $request->url,
+            'lastline' => $request->lastline,
+        ];
+
+        Notification::send($order, new SendEmailNotification($details));
+
+        return redirect()->back();
+    }
+
 }

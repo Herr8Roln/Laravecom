@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Dashboard</title>
         <style>
+            #whitecolor {
+                color: white;
+            }
             body {
                 font-family: Arial, sans-serif;
             }
@@ -58,39 +61,43 @@
       @include('admin.header')
       <div class="main-panel">
         <div class="content-wrapper">
-            <h1 style="text-align: center; font-size: 25px;">Send Email to {{Sorder->email}}</h1>
-            <form>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email Greeting : </label>
-                    <input type="text" name="greeting">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email Subject : </label>
-                    <input type="text" name="subject">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email Body: </label>
-                    <input type="text" name="body">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email Button Name: </label>
-                    <input type="text" name="button">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email URL: </label>
-                    <input type="text" name="url">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <label>Email Last Line: </label>
-                    <input type="text" name="lastline">
-                </div>
-                <div style="padding-left: 35%; padding-top: 30px;">
-                    <input type="submit" name="Send Email" class="btn btn-danger">
-                </div>
+            <div class="card">
+                <h1 style="text-align: center; font-size: 25px; " >Send Email to {{ $order->email }}</h1>
 
-            </form>
+                <br>
+                <form action="{{ route('send_user_email',$order->id ) }}" method="POST">
+                    @csrf
+                     <div class="form-group">
+                        <label>Email Greeting :</label>
+                        <input id="whitecolor" type="text" name="greeting" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Subject :</label>
+                        <input id="whitecolor" type="text" name="firstline" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Body:</label>
+                        <input id="whitecolor" type="text" name="body" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Button Name:</label>
+                        <input id="whitecolor" type="text" name="button" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email URL:</label>
+                        <input id="whitecolor" type="text" name="url" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Last Line:</label>
+                        <input id="whitecolor" type="text" name="lastline" class="form-control">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Send Email" class="btn btn-danger btn-block">
+                    </div>
+                </form>
+            </div>
         </div>
-        </div>
+    </div>
       @include('admin.script')
 
   </body>

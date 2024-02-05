@@ -56,6 +56,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
         Route::get('/print_pdf/{id}', [OrderController::class, 'print_pdf'])->name('print_pdf');
         Route::get('/send_email/{id}', [OrderController::class, 'send_email'])->name('send_email');
+        Route::post('/send_user_email/{id}', [OrderController::class, 'send_user_email'])->name('send_user_email');
     });
 });
 

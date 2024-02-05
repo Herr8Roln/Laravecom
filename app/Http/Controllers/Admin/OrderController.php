@@ -132,4 +132,12 @@ class OrderController extends Controller
         // Output the PDF to the browser for download
         $pdf->Output('order_details.pdf', 'D');
     }
+
+
+
+    public function send_email($id) {
+
+    $order=Order::find($id);
+    return view('admin.email_info', compact('order'));
+    }
 }

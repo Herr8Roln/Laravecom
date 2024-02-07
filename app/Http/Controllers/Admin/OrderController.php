@@ -157,5 +157,18 @@ class OrderController extends Controller
 
         return redirect()->back();
     }
+    public function datasearch(Request $request) {
+        $searchText = $request->search;
+
+        // Use query builder with dynamic 'orWhere' clauses for better readability
+        $orders = order::where(function($query) use ($searchText) {
+                $query->where('name', 'LIKE', "%$searchText%")
+                    ->orWhere('phone', 'LIKE', "%$searchText%")
+                    ->orWhere('product_title', 'LIKE', "%$searchText%");
+            })
+            ->get();
+
+        return view('admin.order.index', compact('orders'));
+    }
 
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Cart;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -22,9 +23,22 @@ class HomeController extends Controller
     }
     public function redirect()
     {
-        $usertype=Auth::user()->usertype;
-        if ($usertype=='1') {
-            return view('admin.home');
+        $usertype = Auth::user()->usertype;
+        
+        if ($usertype == '1') {
+            // Counting directly from the database without retrieving all records
+            $total_product = product::count();
+            $total_order = order::count();
+            $total_user = user::count();
+
+            // Using sum() to calculate total revenue directly in the database
+            $total_revenue = order::sum('price');
+
+            // Counting specific conditions directly in the database
+            $total_delivered = order::where('delivery_status', 'delivered')->count();
+            $total_processing = order::where('delivery_status', 'processing')->count();
+
+            return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing'));
         }
         else
         {

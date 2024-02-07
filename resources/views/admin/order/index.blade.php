@@ -46,6 +46,21 @@
                                         <br>
                                         <br>
                                         <div class="card-header">Orders</div>
+                                        <br>
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-6">
+                                                    <form action="{{  route('order_search') }}" method="GET">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" name="search" placeholder="Search For Something" aria-label="Search" aria-describedby="button-addon2">
+                                                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
                                         <div class="card-body">
 
                                             <a href="{{ route('orders.create') }}" class="btn btn-success btn-sm" title="Add New Order">
@@ -75,7 +90,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($orders as $order)
+                                                        @forelse($orders as $order)
                                                             <tr>
                                                                 <td>{{ $order->id }}</td>
                                                                 <td>{{ $order->name }}</td>
@@ -125,7 +140,12 @@
                                                                     <a href="{{ route('send_email',$order->id) }}" class="btn btn-info">Send Email</a>
                                                                 </td>
                                                             </tr>
-                                                        @endforeach
+
+                                                            @empty
+                                                            <tr>
+                                                                <td > No data found</td>
+                                                            </tr>
+                                                        @endforelse
                                                     </tbody>
                                                 </table>
                                             </div>

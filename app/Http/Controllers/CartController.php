@@ -15,7 +15,8 @@ class CartController extends Controller
         // Get the authenticated user's ID
         $userId = Auth::id();
 
-        // Retrieve cart items for the user with eager loading of the associated product
+        // Retrieve cart items for the user with eager loading of the associated product,
+        //ani tawa nfaser el product yitjbed m3a el cart b une requete additioner bech nitfadaw N+1 appel
         $carts = Cart::with('product')->where('user_id', $userId)->get();
 
         // You may need to adjust the view name if it's different
@@ -64,7 +65,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         $cart = Cart::findOrFail($id);
-  
+
 
         $cart->delete();
 

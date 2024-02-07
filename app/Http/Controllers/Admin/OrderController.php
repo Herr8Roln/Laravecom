@@ -171,4 +171,5 @@ class OrderController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
+
 }

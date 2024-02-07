@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
@@ -62,6 +63,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 Route::resource('carts', CartController::class)->middleware('auth');
+Route::resource('order', UserOrderController::class)->middleware('auth');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
 

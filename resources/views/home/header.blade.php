@@ -30,7 +30,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('carts.index') }}">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('order.index') }}">Order</a>
+                    </li>
+                    @endauth
                     <form class="form-inline" id="shopping_cart">
                         <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>

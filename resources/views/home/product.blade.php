@@ -28,7 +28,7 @@
                         </div>
                         <div class="detail-box">
                             <h5>{{ $products->name }}</h5>
-                      
+
                         </div>
                         <div class="img-box">
                             <img src="{{ asset('storage/' . $products->picture) }}" alt="Product Image" >
@@ -53,5 +53,51 @@
 
             {{ $product->appends(request()->all())->links('pagination::bootstrap-5') }}        </div>
     </div>
-</section>
-<!-- end product section -->
+    <!-- start comments section -->
+    <div class="container">
+        <div class="card text-center" style="padding-bottom: 30px;">
+            <div class="card-body">
+                <h1 class="card-title" style="font-size: 30px; padding-top: 20px; padding-bottom: 20px;">Comments</h1>
+                <form class="d-flex flex-column align-items-center">
+                    <textarea class="form-control mb-3" style="height: 150px; width: 600px;" placeholder=" Comment something here"></textarea>
+                    <a href="#" class="btn btn-primary">Comment</a>
+                </form>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+            <div class="card-body">
+                <h1 class="card-title" style="font-size: 20px; padding-bottom: 20px;">All Comments</h1>
+                <div class="comment">
+                    <b>Alex</b>
+                    <p>This is my first time buying from this site, it was a good experience</p>
+                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
+                </div>
+                <div class="comment">
+                    <b>James</b>
+                    <p>The delivery is a bit slow</p>
+                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
+                </div>
+                <div class="comment">
+                    <b>Max</b>
+                    <p>Is there an option for delivery to New Jersey?</p>
+                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
+                </div>
+                <div style="display: none;" class="replyDiv">
+                    <textarea class="form-control mb-3" placeholder="Write something here" style="height: 100px; width: 500px;"></textarea>
+                    <a href="#" class="btn btn-primary">Reply</a>
+                </div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <!-- end comments section -->
+        </section>
+        <!-- end product section -->
+        <script type="text/javascript">
+            function reply(caller)
+            {
+                $('.replyDiv').insertAfter($(caller));
+                $('.replyDiv').show();
+            }
+        </script>

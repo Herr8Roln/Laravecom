@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
-        
+
         if ($usertype == '1') {
             // Counting directly from the database without retrieving all records
             $total_product = product::count();
@@ -43,7 +44,8 @@ class HomeController extends Controller
         else
         {
             $product = Product::paginate(10);
-        return view('home.userpage',compact('product'));
+            $comment = comment::all();
+        return view('home.userpage',compact('product','comment'));
         }
 
     }
@@ -131,6 +133,23 @@ public function stripePost(Request $request, $totalprice) //up to date
     Session::flash('success', 'Payment successful!');
 
     return back();
+}
+public function add_comment(Request $request)
+{
+    // Ensure the user is authenticated
+    if (Auth::check()) {
+        // Create a new comment using the create method
+        $comment = Comment::create([
+            'name' => Auth::user()->name,
+            'user_id' => Auth::id(),
+            'comment' => $request->input('comment'),
+        ]);
+
+        return redirect()->back();
+    } else {
+        // Redirect the user to the login page if they are not authenticated
+        return redirect()->route('login');
+    }
 }
 }
 

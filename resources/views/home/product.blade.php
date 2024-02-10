@@ -58,9 +58,11 @@
         <div class="card text-center" style="padding-bottom: 30px;">
             <div class="card-body">
                 <h1 class="card-title" style="font-size: 30px; padding-top: 20px; padding-bottom: 20px;">Comments</h1>
-                <form class="d-flex flex-column align-items-center">
-                    <textarea class="form-control mb-3" style="height: 150px; width: 600px;" placeholder=" Comment something here"></textarea>
-                    <a href="#" class="btn btn-primary">Comment</a>
+                <form class="d-flex flex-column align-items-center" action="{{ route('add_comment') }}" method="POST">
+                    @csrf
+                    <textarea class="form-control mb-3" name="comment" style="height: 150px; width: 600px;" placeholder=" Comment something here"></textarea>
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Comment">
                 </form>
             </div>
         </div>

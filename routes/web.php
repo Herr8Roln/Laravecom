@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\OrderController;
 route::get('/', [HomeController::class,'index'])->name('/');
 
 
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -66,10 +69,11 @@ Route::resource('carts', CartController::class)->middleware('auth');
 Route::resource('order', UserOrderController::class)->middleware('auth');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
-
+Route::post('/add_comment', [HomeController::class,'add_comment'])->name('add_comment')->middleware('auth');
 
 Route::controller(HomeController::class)->group(function() {
     Route::get('/cash_order', 'cash_order')->name('cash.order')->middleware('auth');
+
     Route::get('/stripe/{totalPrice}', 'stripe')->name('stripe')->middleware('auth');
     Route::post('stripe/{totalPrice}','stripePost')->name('stripe.post')->middleware('auth');
 });

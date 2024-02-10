@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('replies', function (Blueprint $table) { $table->id();
-        $table->string('name')->nullable();
-        $table->string('comment_id')->nullable();
-        $table->string('reply')->nullable();
-        $table->string('user_id')->nullable();
-        $table->timestamps();
-        $table->foreign('user_id')->references('id')->on('users');
-        $table->foreign('comment_id')->references('id')->on('comments');
+        Schema::create('replies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('comment_id')->nullable();
+            $table->text('reply')->nullable(); // Assuming reply content could be longer, changed to text type
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->timestamps();
 
-
+            // Define foreign key constraints
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

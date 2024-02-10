@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Reply;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,9 @@ class HomeController extends Controller
 
     public function index() {
         $product = Product::paginate(10);
-        return view('home.userpage',compact('product'));
+        $reply = Reply::all();
+        $comment=Comment::orderby('id', 'desc')->get();
+        return view('home.userpage',compact('product','comment','reply'));
     }
     public function redirect()
     {
@@ -38,14 +41,15 @@ class HomeController extends Controller
             // Counting specific conditions directly in the database
             $total_delivered = order::where('delivery_status', 'delivered')->count();
             $total_processing = order::where('delivery_status', 'processing')->count();
-
             return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing'));
         }
         else
         {
+            $reply = Reply::all();
             $product = Product::paginate(10);
-            $comment = comment::all();
-        return view('home.userpage',compact('product','comment'));
+            $comment=Comment::orderby('id', 'desc')->get();
+
+        return view('home.userpage',compact('product','comment','reply'));
         }
 
     }
@@ -66,7 +70,7 @@ class HomeController extends Controller
     $product = Product::findOrFail($id);
     return view('home.product_details', compact('product'));
 }
-public function cash_order()
+public function cash_order() //works fine
 {
     $user = Auth::user();
     $userId = $user->id;
@@ -93,10 +97,10 @@ public function cash_order()
     // Redirect to a meaningful page or provide a feedback message
     return redirect()->back()->with('message', 'we have Received Your Order. We will contact you soon');
 }
-public function stripe($totalprice) {
+public function stripe($totalprice) { //works fine
     return view('home.stripe',compact('totalprice'));
 }
-public function stripePost(Request $request, $totalprice) //up to date
+public function stripePost(Request $request, $totalprice) //works fine
 {
     Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -134,7 +138,7 @@ public function stripePost(Request $request, $totalprice) //up to date
 
     return back();
 }
-public function add_comment(Request $request)
+public function add_comment(Request $request) //works fine
 {
     // Ensure the user is authenticated
     if (Auth::check()) {
@@ -150,6 +154,30 @@ public function add_comment(Request $request)
         // Redirect the user to the login page if they are not authenticated
         return redirect()->route('login');
     }
+}
+public function add_reply(Request $request) //works fine
+{
+    // Ensure the user is authenticated
+        if (Auth::id()) {
+            $reply = Reply::create([
+                'name' => Auth::user()->name,
+                'user_id' => Auth::id(),
+                'comment_id' => $request->commentId,
+                'reply' => $request->reply,
+            ]);
+
+            return redirect()->back();
+        }
+    else {
+        // Redirect the user to the login page if they are not authenticated
+        return redirect()->route('login');
+    }
+}
+public function product_search(Request $request) //works fine
+{
+    $serach_text=$request->search;
+    $product=product::where('title', 'LIKE','%$serach_text%')->get();
+    return view('home.userpage', compact('product'));
 }
 }
 

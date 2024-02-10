@@ -12,7 +12,7 @@ class Comment extends Model
     protected $fillable = [
         'name',
         'comment',
-        'user_id'
+        'user_id' ,
     ];
 
     public function user()

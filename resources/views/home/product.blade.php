@@ -5,6 +5,14 @@
             <h2>
                 Our <span>products</span>
             </h2>
+            <br><br>
+<div>
+<form action="{{ route('product_search') }}" method="GET">
+@csrf
+<input style="width: 500px;" type="text" name="search" placeholder="Search for Something">
+<input type="submit" value="search">
+</form>
+</div>
         </div>
         <div class="row">
             @foreach ($product as $products)
@@ -51,8 +59,9 @@
                 </div>
             @endforeach
 
-            {{ $product->appends(request()->all())->links('pagination::bootstrap-5') }}        </div>
+            {{ $product->appends(request()->all())->links('pagination::bootstrap-5') }}
     </div>
+    <br>
     <!-- start comments section -->
     <div class="container">
         <div class="card text-center" style="padding-bottom: 30px;">
@@ -67,28 +76,42 @@
             </div>
         </div>
 
+
+
         <div class="card" style="margin-top: 30px;">
             <div class="card-body">
                 <h1 class="card-title" style="font-size: 20px; padding-bottom: 20px;">All Comments</h1>
-                <div class="comment">
-                    <b>Alex</b>
-                    <p>This is my first time buying from this site, it was a good experience</p>
-                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
-                </div>
-                <div class="comment">
-                    <b>James</b>
-                    <p>The delivery is a bit slow</p>
-                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
-                </div>
-                <div class="comment">
-                    <b>Max</b>
-                    <p>Is there an option for delivery to New Jersey?</p>
-                    <a href="javascript:void(0);" class="reply-link" onclick="reply(this)">Reply</a>
-                </div>
+
+                @foreach ( $comment as $comment)
+                    <div class="comment">
+                        <b>{{ $comment->name }}</b>
+                        <p>{{ $comment->comment }}</p>
+                       {{-- ok the data-commentId : data is part html5 designation   --}}
+                        <a href="javascript:void(0);" class="reply-link" onclick="reply(this)" style="text-decoration: none;" data-commentid="{{ $comment->id }}">Reply</a>
+                    @foreach($reply as $rep)
+                        @if($rep->comment_id==$comment->id)
+                        <div style="padding-left: 3%; padding-bottom: 10px; padding-bottom: 10px;">
+                        <b>{{$rep->name}}</b>
+                        <p>{{$rep->reply}}</p>
+                        <a href="javascript:void(0);" class="reply-link" onclick="reply(this)" style="text-decoration: none;" data-commentid="{{ $comment->id }}">Reply</a>
+                        </div>
+                        @endif
+                    @endforeach
+                    </div>
+                @endforeach
+
+                <!-- Reply text Box-->
                 <div style="display: none;" class="replyDiv">
-                    <textarea class="form-control mb-3" placeholder="Write something here" style="height: 100px; width: 500px;"></textarea>
-                    <a href="#" class="btn btn-primary">Reply</a>
+
+                    <form action="{{url('add_reply')}}" method="POST">
+                        @csrf
+                        <input type="hidden" id="commentId" name="commentId" >
+                        <textarea style="height: 100px; width: 500px;" name="reply" placeholder="write something here"></textarea>
+
+                        <button type="submit" class="btn btn-dark">Reply</button>
+                        <button  onclick="reply_close(this)" class="btn btn-danger">Close</button>
                 </div>
+                <form>
                 <br>
             </div>
             <br>
@@ -99,7 +122,27 @@
         <script type="text/javascript">
             function reply(caller)
             {
+            {{-- fetches the value of the data-commentid attribute from the element that button and then it sets that value as the value of an input element with the id commentId. --}}
+
+                document.getElementById('commentId').value=$(caller).attr('data-Commentid');
                 $('.replyDiv').insertAfter($(caller));
                 $('.replyDiv').show();
             }
+            function reply_close(caller)
+            {
+                $('.replyDiv').hide();
+            }
+
         </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                var scrollpos = localStorage.getItem('scrollpos');
+                if (scrollpos) window.scrollTo(0, scrollpos);
+            });
+
+            window.onbeforeunload = function(e) {
+                var scrollpos = window.scrollY || window.pageYOffset;
+                localStorage.setItem('scrollpos', scrollpos);
+            };
+
+            </script>

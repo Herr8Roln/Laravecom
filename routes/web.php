@@ -72,6 +72,8 @@ Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.st
 Route::post('/add_comment', [HomeController::class,'add_comment'])->name('add_comment');
 Route::post('/add_reply', [HomeController::class,'add_reply'])->name('add_reply');
 Route::get('/product_search', [HomeController::class,'product_search'])->name('product_search');
+Route::get('/search_product', [HomeController::class,'search_product'])->name('search_product');
+Route::get('/product', [HomeController::class,'product'])->name('product');
 
 Route::controller(HomeController::class)->group(function() {
     Route::get('/cash_order', 'cash_order')->name('cash.order')->middleware('auth');

@@ -25,23 +25,50 @@ class CartController extends Controller
 
     public function store(Request $request, $id)
     {
-        $user = Auth::user();
-        $product = Product::findOrFail($id);
+        if (Auth::id()) {
+        $user=Auth::user();
+        $userid=$user->id;
+        $product=product::find($id);
+        $product_exist_id=cart::where('Product_id', '=', $id)->where('user_id' ,'=', $userid)->get('id')->first();
 
-        Cart::create([
-            'name' => $user->name,
-            'email' => $user->email,
-            'phone' => $user->phone,
-            'address' => $user->address,
-            'user_id' => $user->id,
-            'product_title' => $product->name,
-            'price' => $product->discount_price ?? $product->price,
-            'picture' => $product->picture,
-            'product_id' => $id,
-            'quantity' => $request->quantity,
-        ]);
 
-        return redirect()->back();
+        if ($product_exist_id) {
+            $cart=cart::find($product_exist_id)->first();
+            $quantity=$cart->quantity;
+            $cart->quantity=$quantity+$request->quantity;
+            if($product->discount_price!=null) {
+            $cart->price= $product->discount_price* $request-> quantity;
+            }
+            else {
+            $cart->price= $product->price* $request->quantity;
+             }
+            $cart->save();
+            return redirect()->back()->with('message','Prodduct Added successfully');
+
+        }
+        else
+        {
+            Cart::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'address' => $user->address,
+                'user_id' => $user->id,
+                'product_title' => $product->name,
+                'price' => $product->discount_price ?? $product->price,
+                'picture' => $product->picture,
+                'product_id' => $id,
+                'quantity' => $request->quantity,
+            ]);
+
+            return redirect()->back();
+            }
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
 
 

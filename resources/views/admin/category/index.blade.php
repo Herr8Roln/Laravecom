@@ -19,6 +19,12 @@
     <div class="container-scroller">
         @include('admin.sidebar')
         @include('admin.header')
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        {{session()->get('message')}}
+        </div>
+        @endif
         <div class="main-panel" style="align: center">
             <div class="content-wrapper">
                 <div class="div_center">

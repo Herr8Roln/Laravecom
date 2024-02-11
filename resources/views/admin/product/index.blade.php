@@ -25,7 +25,14 @@
 @extends('admin.product.layout')
 
 @section('content')
+
     <div class="container">
+        @if(session()->has('message'))
+<div class="alert alert-success">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+{{session()->get('message')}}
+</div>
+@endif
         <div class="row">
             <div class="col-md-9" style="width: 1200px;">
                 <div class="card">

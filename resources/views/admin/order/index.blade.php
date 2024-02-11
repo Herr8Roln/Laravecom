@@ -41,6 +41,12 @@
                     @section('content')
 
                             <div class="row">
+                                @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                {{session()->get('message')}}
+                                </div>
+                                @endif
                                 <div class="col-md-9" style="width: 1000px; margin-top: 20px; ">
                                     <div class="card"><br>
                                         <br>

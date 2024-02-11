@@ -185,6 +185,26 @@ public function product_search(Request $request) //works fine
         // this research with % might cause confusion like men and women
     return view('home.userpage', compact('product','reply','comment'));
 }
+public function product() //works fine
+{
+    $product = Product::paginate(10);
+    $reply = Reply::all();
+    $comment=Comment::orderby('id', 'desc')->get();
+    return view('home.all_product',compact('product','reply','comment'));
+
+}
+public function search_product(Request $request) //works fine
+{
+    $reply = Reply::all();
+    $comment=Comment::orderby('id', 'desc')->get();
+    //search process
+    $search_text=$request->search;
+    $product = Product::where('name', 'LIKE', "%$search_text%")
+    ->orWhereHas('category', function($query) use ($search_text) {
+        $query->where('name', 'LIKE', "%$search_text%"); })->paginate(10);
+        // this research with % might cause confusion like men and women
+    return view('home.all_product', compact('product','reply','comment'));
+}
 }
 
 

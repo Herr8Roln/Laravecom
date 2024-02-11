@@ -175,9 +175,15 @@ public function add_reply(Request $request) //works fine
 }
 public function product_search(Request $request) //works fine
 {
-    $serach_text=$request->search;
-    $product=product::where('title', 'LIKE','%$serach_text%')->get();
-    return view('home.userpage', compact('product'));
+    $reply = Reply::all();
+    $comment=Comment::orderby('id', 'desc')->get();
+    //search process
+    $search_text=$request->search;
+    $product = Product::where('name', 'LIKE', "%$search_text%")
+    ->orWhereHas('category', function($query) use ($search_text) {
+        $query->where('name', 'LIKE', "%$search_text%"); })->paginate(10);
+        // this research with % might cause confusion like men and women
+    return view('home.userpage', compact('product','reply','comment'));
 }
 }
 

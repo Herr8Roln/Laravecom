@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Reply;
 
+
 class HomeController extends Controller
 {
 

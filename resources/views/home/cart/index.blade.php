@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
+    <head>
    @include('home.head')
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    </head>
    <body>
+    @include('sweetalert::alert');
       <div class="hero_area">
         @include('home.header');
         @if(session()->has('message'))
@@ -88,7 +93,7 @@
                                             <form method="POST" action="{{ route('carts.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete " onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="button" class="btn btn-danger btn-sm" title="Delete" onclick="confirmation(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -124,6 +129,23 @@
         <div class="cpy_">
 
         </div>
+        <script>
+            function confirmation(ev) {
+                ev.preventDefault();
+                var form = ev.target.form;
+                swal({
+                    title: "Are you sure to cancel this product?",
+                    text: "You will not be able to revert this!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willCancel) => {
+                    if (willCancel) {
+                        form.submit();
+                    }
+                });
+            }
+    </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
         <!-- jQery -->
         <script src="/home/js/jquery-3.4.1.min.js"></script>

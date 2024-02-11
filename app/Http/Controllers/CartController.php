@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Product;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -43,7 +43,8 @@ class CartController extends Controller
             $cart->price= $product->price* $request->quantity;
              }
             $cart->save();
-            return redirect()->back()->with('message','Prodduct Added successfully');
+            Alert::success('Product Added Successfully', 'We have addeed product to the cart' );
+            return redirect()->back();
 
         }
         else
@@ -60,6 +61,7 @@ class CartController extends Controller
                 'product_id' => $id,
                 'quantity' => $request->quantity,
             ]);
+            Alert::success('Product Added Successfully', 'We have addeed product to the cart' );
 
             return redirect()->back();
             }

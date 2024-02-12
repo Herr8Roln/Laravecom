@@ -51,6 +51,16 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+            <br>
+            <div style="text-align: center;">
+                <a href="{{ route('auth_google') }}" style="background-color: white; display: inline-block; padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; border: 2px solid #000;">
+                    <img src="{{ asset('home/images/7c50a10e-cropped-8aa171d5-new-google-favicon-512.png') }}" style="width: 20px; height: 20px; vertical-align: middle; display: inline-block;">
+                    <span style="margin-left: 10px; vertical-align: middle; display: inline-block;">Sign in with Google</span>
+                </a>
+            </div>
+
+            <br>
+
         </form>
     </x-authentication-card>
 </x-guest-layout>

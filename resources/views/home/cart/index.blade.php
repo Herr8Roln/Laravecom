@@ -9,12 +9,7 @@
     @include('sweetalert::alert');
       <div class="hero_area">
         @include('home.header');
-        @if(session()->has('message'))
-            <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                {{session()->get('message')}}
-            </div>
-        @endif
+
 
 
 
@@ -90,11 +85,12 @@
                                                 <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
                                             </a>
 
-                                            <form method="POST" action="{{ route('carts.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ route('carts.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline" id="delete-form-{{ $item->id }}">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button type="button" class="btn btn-danger btn-sm" title="Delete" onclick="confirmation(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="button" class="btn btn-danger btn-sm" title="Delete" onclick="confirmation('{{ $item->id }}')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
+
                                         </td>
                                     </tr>
                                     @php
@@ -126,26 +122,23 @@
         <br>
         <br>
         @include('home.footer');
-        <div class="cpy_">
 
-        </div>
         <script>
-            function confirmation(ev) {
-                ev.preventDefault();
-                var form = ev.target.form;
+            function confirmation(itemId) {
                 swal({
-                    title: "Are you sure to cancel this product?",
+                    title: "Are you sure to cancel this order?",
                     text: "You will not be able to revert this!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 }).then((willCancel) => {
                     if (willCancel) {
-                        form.submit();
+                        document.getElementById('delete-form-' + itemId).submit();
                     }
                 });
             }
-    </script>
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
         <!-- jQery -->
         <script src="/home/js/jquery-3.4.1.min.js"></script>

@@ -15,9 +15,6 @@
       @include('home.subscribe');
       @include('home.client');
       @include('home.footer');
-      <div class="cpy_">
-
-      </div>
       <!-- jQery -->
       <script src="/home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

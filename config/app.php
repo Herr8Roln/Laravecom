@@ -158,7 +158,7 @@ return [
     'providers' => ServiceProvider::defaultProviders()->merge([
 
 
-    
+
 
         /*
          * Package Service Providers...
@@ -174,6 +174,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
 
     ])->toArray(),
 
@@ -187,6 +189,8 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+
+
 
     'aliases' => Facade::defaultAliases()->merge([
 

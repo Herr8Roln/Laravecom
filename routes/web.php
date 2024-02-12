@@ -8,6 +8,7 @@ use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,10 +75,16 @@ Route::post('/add_reply', [HomeController::class,'add_reply'])->name('add_reply'
 Route::get('/product_search', [HomeController::class,'product_search'])->name('product_search');
 Route::get('/search_product', [HomeController::class,'search_product'])->name('search_product');
 Route::get('/product', [HomeController::class,'product'])->name('product');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+
 
 Route::controller(HomeController::class)->group(function() {
     Route::get('/cash_order', 'cash_order')->name('cash.order')->middleware('auth');
 
     Route::get('/stripe/{totalPrice}', 'stripe')->name('stripe')->middleware('auth');
     Route::post('stripe/{totalPrice}','stripePost')->name('stripe.post')->middleware('auth');
+    route::get('auth/google', [GoogleController::class, 'googlepage'])->name('auth_google');
+route::get('auth/google/callback', [GoogleController::class, 'googlecallback'])->name('callback_google');
 });

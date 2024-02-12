@@ -30,8 +30,19 @@ class UserOrderController extends Controller
         }
         public function destroy($id)
         {
-            // Logic to retrieve and show a specific order
+            try {
+                // Find the order by its ID
+                $order = Order::findOrFail($id);
+
+                // Delete the order
+                $order->delete();
+
+                return redirect()->back()->with('message', 'Order deleted successfully.');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('message', 'Failed to delete the order. Error: ' . $e->getMessage());
+            }
         }
+
 
         public function update($id)
         {

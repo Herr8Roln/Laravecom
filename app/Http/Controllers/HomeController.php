@@ -206,6 +206,20 @@ public function search_product(Request $request) //works fine
         // this research with % might cause confusion like men and women
     return view('home.all_product', compact('product','reply','comment'));
 }
+public function blog() //works fine
+{
+    return view('home.blog');
 }
+public function contact() //works fine
+{
+    return view('home.contact');
+}
+public function about() //works fine
+{
+    return view('home.about');
+}
+
+}
+
 
 

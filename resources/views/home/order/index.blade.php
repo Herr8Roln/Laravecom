@@ -19,14 +19,14 @@
                     <div class="card-body">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-md-6">
-                                    <form action="{{  route('order_search') }}" method="GET">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="search" placeholder="Search For Something" aria-label="Search" aria-describedby="button-addon2">
-                                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="col-md-8">
+                                <form action="{{  route('order_search') }}" method="GET">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="search" placeholder="Search For Something" aria-label="Search" aria-describedby="button-addon2">
+                                        <button class="btn btn-outline-primary" type="submit" id="button-addon2" style="height: 38px;">Search</button>
+                                    </div>
+                                </form>
+                            </div>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -63,17 +63,17 @@
                                         <td>{{ $item->delivery_status }}</td>
                                         <td>
                                             @if ($item->delivery_status == 'delivered')
-                                            <p style="color: red"> order already delivered</p>
+                                                <p style="color: red"> Order already delivered</p>
                                             @elseif ($item->delivery_status == 'canceled')
-                                            <p style="color: red"> You canceled this order</p>
+                                                <p style="color: red"> You canceled this order</p>
                                             @else
-                                            <form method="POST" action="{{ route('order.update', $item->id) }}" style="display:inline" id="cancelOrderForm">
-                                                @csrf
-                                                @method('PUT')
-                                                <button type="button" class="btn btn-danger btn-sm" title="Cancel Order" data-toggle="modal" data-target="#cancelConfirmationModal">
-                                                    Cancel Order
-                                                </button>
-                                            </form>
+                                                <form method="POST" action="{{ route('order.destroy', $item->id) }}" style="display:inline" id="cancelOrderForm">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="button" class="btn btn-danger btn-sm" title="Cancel Order" data-toggle="modal" data-target="#cancelConfirmationModal">
+                                                        Cancel Order
+                                                    </button>
+                                                </form>
                                             @endif
                                         </td>
                                     </tr>
@@ -89,6 +89,11 @@
 </div>
 <br>
 <br>
+<script>
+    function submitCancelOrderForm() {
+        document.getElementById('cancelOrderForm').submit();
+    }
+</script>
 @include('home.footer')
 <div class="cpy_"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
@@ -110,10 +115,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">Cancel Order</button>
+                <button type="submit" class="btn btn-danger" onclick="submitCancelOrderForm()">Cancel Order</button>
             </div>
         </div>
     </div>
 </div>
+
 </body>
+
+
 </html>

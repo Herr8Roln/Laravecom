@@ -24,14 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('contact')}}" >Contact</a>
                     </li>
-                    @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('carts.index') }}">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('order.index') }}">Order</a>
-                    </li>
-                    @endauth
                     <form class="form-inline" id="shopping_cart">
                         <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -50,6 +42,7 @@
                                         <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
                                         @if(app('App\Http\Controllers\HomeController')->user())
                                             <a class="dropdown-item" href="{{ route('carts.index') }}">My Cart</a>
+                                            <a class="dropdown-item" href="{{ route('order.index') }}">My Orders</a>
                                         @endif<a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout
@@ -62,10 +55,10 @@
                                 </li>
                             @else
                             <li class="nav-item">
-                                <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
+                                <a class="btn btn-dark" id="logincss" href="{{ route('login') }}">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                                <a class="btn btn-danger" href="{{ route('register') }}">Register</a>
                             </li>
                         @endauth
                     @endif

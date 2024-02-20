@@ -68,7 +68,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('products.index') }}">
               <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
+                <i class="mdi mdi-playlist-play"></i>
               </span>
               <span class="menu-title">Product</span>
             </a>
@@ -87,6 +87,14 @@
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
                 <span class="menu-title">Order</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('subcategories.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Subcategory</span>
             </a>
         </li>
         <li class="nav-item menu-items">

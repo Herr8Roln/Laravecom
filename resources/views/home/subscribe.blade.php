@@ -8,12 +8,11 @@
                         <div class="heading_container heading_center">
                            <h3>Subscribe To Get Discount Offers</h3>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                        <p>Subscribe now to unlock exclusive discount offers and stay updated with the latest deals. Join our mailing list and be the first to know about special promotions tailored just for you!</p>
                         <form action="">
-                           <input type="email" placeholder="Enter your email">
-                           <button>
-                           subscribe
-                           </button>
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <br>
+                           <input type="submit" class="btn btn-danger" value="Subscribe">
                         </form>
                      </div>
                   </div>

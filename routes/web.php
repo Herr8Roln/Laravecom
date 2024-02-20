@@ -2,7 +2,7 @@
 use App\Http\Controllers\CartController;
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -53,7 +53,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     }], function () {
         // Categories CRUD
         Route::resource('categories', CategoryController::class);
-
+        Route::resource('subcategories', SubcategoryController::class);
+        //Route::resource('subcategories', SubcategoryController::class)->except(['show']);
         // Products CRUD
         Route::resource('products', ProductController::class);
         // Order CRUD
@@ -86,5 +87,5 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/stripe/{totalPrice}', 'stripe')->name('stripe')->middleware('auth');
     Route::post('stripe/{totalPrice}','stripePost')->name('stripe.post')->middleware('auth');
     route::get('auth/google', [GoogleController::class, 'googlepage'])->name('auth_google');
-route::get('auth/google/callback', [GoogleController::class, 'googlecallback'])->name('callback_google');
+    route::get('auth/google/callback', [GoogleController::class, 'googlecallback']);
 });

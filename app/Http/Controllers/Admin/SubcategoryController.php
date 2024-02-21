@@ -34,27 +34,32 @@ class SubcategoryController extends Controller
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
             $imageName = time() . '.' . $picture->extension();
-            $picture->move(public_path('images/subcategories'), $imageName);
+            $picture->move(public_path('storage\subcategories'), $imageName);
             $subcategory->picture = $imageName;
             $subcategory->save();
         }
 
-        return redirect()->route('admin.subcategory.index')
+        return redirect()->route('subcategories.index')
             ->with('success', 'Subcategory created successfully.');
     }
 
     public function show($id)
 {
+
     $subcategory = Subcategory::findOrFail($id);
-    return view('admin.subcategories.show', compact('subcategory'));
+    return view('admin.subcategory.show', compact('subcategory',));
 }
 
 
-    public function edit(Subcategory $subcategory)
-    {
-        $categories = Category::all();
-        return view('admin.subcategory.edit', compact('subcategory', 'categories'));
-    }
+public function edit($id)
+{
+    $subcategory = Subcategory::find($id);
+    $category = Category::all(); // Assuming you also need categories
+
+    return view('admin.subcategory.edit', compact('subcategory', 'category'));
+}
+
+
 
     public function update(Request $request, Subcategory $subcategory)
     {
@@ -69,7 +74,7 @@ class SubcategoryController extends Controller
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
             $imageName = time() . '.' . $picture->extension();
-            $picture->move(public_path('images/subcategories'), $imageName);
+            $picture->move(public_path('storage\subcategories'), $imageName);
             $subcategory->picture = $imageName;
             $subcategory->save();
         }
@@ -87,7 +92,8 @@ class SubcategoryController extends Controller
     public function showDropdown()
     {
         $subcategory = Subcategory::all();
-        return view('admin.category.dropdown', compact('subcategory'));
+        return view('admin.subcategory.dropdown', compact('subcategory'));
+
     }
 
 }

@@ -13,12 +13,12 @@
         <input type="text" name="description" id="description" class="form-control"></br>
         <label>price</label></br>
         <input type="text" name="price" id="price" class="form-control"></br>
-        
+
         <label>discount price</label></br>
         <input type="text" name="discount_price" id="discount_price" class="form-control"></br>
         <label>Quantity </label></br>
         <input type="text" name="available_qte" id="available_qte" class="form-control"></br>
-        @include('admin.category.dropdown')
+        @include('admin.subcategory.dropdown')
         </br>
         <div class="form-group">
             <label for="picture">Product Picture:</label>

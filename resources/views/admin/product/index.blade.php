@@ -54,45 +54,55 @@
                                         <th>Price</th>
                                         <th>discount price</th>
                                         <th>availableqte</th>
-                                        <th>Category</th>
+                                        <th>category</th>
+                                        <th>Subcategory</th>
                                         <th style="width: 180px">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($product as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            @if($item->picture)
-                                                <img src="{{ asset('storage/' . $item->picture) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
-                                            @else
-                                                No Image
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->description }}</td>
-                                        <td>{{ $item->price }}</td>
-                                        <td>{{ $item->discount_price }}</td>
-                                        <td>{{ $item->available_qte }}</td>
-                                        <td>
-                                            @if($item->category && $item->category->icon)
-                                                <img src="{{ asset('storage/' . $item->category->icon) }}" alt="Category Icon" class="img-fluid">
-                                            @else
-                                                No Category Icon
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('products.show', $item->id) }}" title="View product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ route('products.edit', $item->id) }}" title="Edit product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                    @foreach($product as $product)
+<tr>
+    <td>{{ $loop->iteration }}</td>
+    <td>
+        @if($product->picture)
+            <img src="{{ asset('storage/' . $product->picture) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+        @else
+            No Image
+        @endif
+    </td>
+    <td>{{ $product->name }}</td>
+    <td>{{ $product->description }}</td>
+    <td>{{ $product->price }}</td>
+    <td>{{ $product->discount_price }}</td>
+    <td>{{ $product->available_qte }}</td>
+    <td>
+        @if($product->subcategory && $product->subcategory->category && $product->subcategory->category->icon)
+        <img src="{{ asset('storage/' . $product->subcategory->category->icon) }}" alt="Category Icon" class="img-fluid">
+    @else
+        No Category Icon
+    @endif
 
-                                            <form method="POST" action="{{ route('products.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+    </td>
+    <td>
+        @if($product->subcategory && $product->subcategory->picture)
+            <img src="{{ asset('storage/subcategories/' . $product->subcategory->picture) }}" alt="Subcategory Picture" class="img-fluid">
+        @else
+            No Subcategory Picture
+        @endif
+    </td>
+    <td>
+        <a href="{{ route('products.show', $product->id) }}" title="View product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+        <a href="{{ route('products.edit', $product->id) }}" title="Edit product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+
+        <form method="POST" action="{{ route('products.destroy', $product->id) }}" accept-charset="UTF-8" style="display:inline">
+            @method("DELETE")
+            @csrf
+            <button type="submit" class="btn btn-danger btn-sm" title="Delete product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+        </form>
+    </td>
+</tr>
+@endforeach
+
 
 
 

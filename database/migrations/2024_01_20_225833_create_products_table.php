@@ -10,21 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('products', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->text('description');
-        $table->decimal('price', 10, 2);
-        $table->decimal('discount_price', 10, 2)->nullable();
-        $table->unsignedInteger('available_qte');
-        $table->unsignedBigInteger('category_id')->default('9');;
-        $table->timestamps();
-        $table->foreign('category_id')->references('id')->on('categories');
-        $table->foreign('subcategory_id')->references('id')->on('subcategories');
-        $table->string('picture')->nullable();
-    });
-}
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 10, 2);
+            $table->decimal('discount_price', 10, 2)->nullable();
+            $table->unsignedInteger('available_qte');
+            $table->unsignedBigInteger('subcategory_id')->default(9);
+            $table->timestamps();
+            $table->foreign('subcategory_id')->references('id')->on('subcategories');
+            $table->string('picture')->nullable();
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -32,8 +31,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('picture');
-        });
     }
 };

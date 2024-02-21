@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Category;
-
+use App\Models\Admin\Subcategory;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,10 +17,11 @@ class ProductController extends Controller
 
     }
 
-    public function create()
+        public function create()
     {
-        $category = Category::all();
-        return view('admin.product.create', compact('category'));
+        $categories = Category::with('subcategories')->get();
+
+        return view('admin.product.create', compact('categories'));
     }
 
     public function store(Request $request) //Updating store method according to picture attribute
@@ -57,36 +58,22 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product','category'));
     }
 
-    public function update(Request $request, $id)
-    {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the picture
-        ]);
+    public function update(Request $request, Product $product)
+{
+    $requestData = $request->only(['name', 'description', 'price', 'discount_price', 'available_qte', 'category_id', 'subcategory_id']);
 
-        // Find the product by ID
-        $product = Product::findOrFail($id);
-
-        // Update other fields
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-
-        // Update picture if a new one is provided
-        if ($request->hasFile('picture')) {
-            $picture = $request->file('picture');
-            $picturePath = $picture->store('product_pictures', 'public');
-            $product->picture = $picturePath;
-        }
-
-        $product->update($request);
-
-        $flashMessage = 'Product Updated!';
-        return redirect()->route('products.index', compact('flashMessage'));
+    // Check if picture is uploaded and update it if necessary
+    if ($request->hasFile('picture')) {
+        $picturePath = $request->file('picture')->store('products', 'public');
+        $requestData['picture'] = $picturePath;
     }
+
+    // Update the product with the extracted attributes
+    $product->update($requestData);
+
+    $flashMessage = 'Product Updated!';
+    return redirect()->route('products.index', compact('flashMessage'));
+}
 
     public function destroy($id)
     {

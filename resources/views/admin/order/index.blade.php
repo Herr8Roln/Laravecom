@@ -68,10 +68,6 @@
 
                                         <br>
                                         <div class="card-body">
-
-                                            <a href="{{ route('orders.create') }}" class="btn btn-success btn-sm" title="Add New Order">
-                                                <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                                            </a>
                                             <br/>
                                             <br/>
                                             <div class="table-responsive">

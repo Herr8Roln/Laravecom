@@ -98,6 +98,14 @@
             </a>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('users.index') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Clients</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
 
         </li>
         </ul>

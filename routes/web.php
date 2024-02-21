@@ -8,6 +8,7 @@ use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Categories CRUD
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubcategoryController::class);
+        Route::resource('users', UserController::class);
         //Route::resource('subcategories', SubcategoryController::class)->except(['show']);
+        Route::get('/categories/{category}/subcategories', 'SubcategoryController@create');
+
         // Products CRUD
         Route::resource('products', ProductController::class);
         // Order CRUD

@@ -14,21 +14,23 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Reply;
-
+use App\Models\Category;
 
 class HomeController extends Controller
 {
 
 
     public function index() {
+        $categories = Category::all();
         $product = Product::paginate(10);
         $reply = Reply::all();
         $comment=Comment::orderby('id', 'desc')->get();
-        return view('home.userpage',compact('product','comment','reply'));
+        return view('home.userpage',compact('product','comment','reply','categories'));
     }
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
+        $categories = Category::all();
 
         if ($usertype == '1') {
             // Counting directly from the database without retrieving all records
@@ -42,15 +44,16 @@ class HomeController extends Controller
             // Counting specific conditions directly in the database
             $total_delivered = order::where('delivery_status', 'delivered')->count();
             $total_processing = order::where('delivery_status', 'processing')->count();
-            return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing'));
+            return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing','categories'));
         }
         else
         {
+            $categories=Category::all();
             $reply = Reply::all();
             $product = Product::paginate(10);
             $comment=Comment::orderby('id', 'desc')->get();
 
-        return view('home.userpage',compact('product','comment','reply'));
+        return view('home.userpage',compact('product','comment','reply','categories'));
         }
 
     }
@@ -176,6 +179,7 @@ public function add_reply(Request $request) //works fine
 }
 public function product_search(Request $request) //works fine
 {
+    $categories = Category::all();
     $reply = Reply::all();
     $comment=Comment::orderby('id', 'desc')->get();
     //search process
@@ -184,7 +188,7 @@ public function product_search(Request $request) //works fine
     ->orWhereHas('category', function($query) use ($search_text) {
         $query->where('name', 'LIKE', "%$search_text%"); })->paginate(10);
         // this research with % might cause confusion like men and women
-    return view('home.userpage', compact('product','reply','comment'));
+    return view('home.userpage', compact('product','reply','comment','categories'));
 }
 public function product() //works fine
 {

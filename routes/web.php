@@ -56,7 +56,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubcategoryController::class);
         Route::resource('users', UserController::class);
-        //Route::resource('subcategories', SubcategoryController::class)->except(['show']);
         Route::get('/categories/{category}/subcategories', 'SubcategoryController@create');
 
         // Products CRUD
@@ -71,7 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 });
 
-Route::resource('carts', CartController::class)->middleware('auth');
+Route::resource('carts', CartController::class)->middleware('auth')->except('store');
 Route::resource('order', UserOrderController::class)->middleware('auth');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.store')->middleware('auth');

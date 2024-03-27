@@ -64,6 +64,7 @@
             @endforeach
 
             {{ $product->appends(request()->all())->links('pagination::bootstrap-5') }}
+
     </div>
     <br>
     <!-- start comments section -->

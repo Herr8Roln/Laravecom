@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Reply;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -210,6 +211,20 @@ public function search_product(Request $request) //works fine
         // this research with % might cause confusion like men and women
     return view('home.all_product', compact('product','reply','comment'));
 }
+
+public function filterProducts(Request $request)
+    {
+        $reply = Reply::all();
+        $comment=Comment::orderby('id', 'desc')->get();
+        $category_id = $request->input('category_id');
+        // Assuming subcategories table has category_id column linking to categories
+        $subcategories = DB::table('subcategories')->where('category_id', $category_id)->pluck('id');
+        // Assuming products table has subcategory_id column
+        $product = Product::whereIn('subcategory_id', $subcategories)->paginate(10); // Adjust per your requirement
+
+        return view('home.all_product', compact('product','reply','comment'));
+    }
+
 public function blog() //works fine
 {
     return view('home.blog');

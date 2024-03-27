@@ -54,11 +54,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     }], function () {
         // Categories CRUD
         Route::resource('categories', CategoryController::class);
-        Route::resource('subcategories', SubcategoryController::class);
+        Route::resource('/subcategories', SubcategoryController::class);
         Route::resource('users', UserController::class);
-        Route::get('/categories/{category}/subcategories', 'SubcategoryController@create');
 
-        // Products CRUD
+
+       // Products CRUD
         Route::resource('products', ProductController::class);
         // Order CRUD
         Route::resource('orders', OrderController::class);
@@ -67,11 +67,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/send_email/{id}', [OrderController::class, 'send_email'])->name('send_email');
         Route::post('/send_user_email/{id}', [OrderController::class, 'send_user_email'])->name('send_user_email');
         Route::get('/order_search', [OrderController::class, 'datasearch'])->name('order_search');
+        Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
     });
 });
 
 Route::resource('carts', CartController::class)->middleware('auth')->except('store');
 Route::resource('order', UserOrderController::class)->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
 Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::post('carts/{product}', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
 Route::post('/add_comment', [HomeController::class,'add_comment'])->name('add_comment');
@@ -82,6 +84,8 @@ Route::get('/product', [HomeController::class,'product'])->name('product');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/filter-products', [HomeController::class, 'filterProducts'])->name('filter.products');
+
 
 
 Route::controller(HomeController::class)->group(function() {
@@ -91,4 +95,6 @@ Route::controller(HomeController::class)->group(function() {
     Route::post('stripe/{totalPrice}','stripePost')->name('stripe.post')->middleware('auth');
     route::get('auth/google', [GoogleController::class, 'googlepage'])->name('auth_google');
     route::get('auth/google/callback', [GoogleController::class, 'googlecallback']);
+    route::get('auth/google/callback', [GoogleController::class, 'googlecallback']);
+    route::get('auth/google/callback/store', [GoogleController::class, 'store'])->name('google.store');
 });

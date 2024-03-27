@@ -91,4 +91,22 @@ class ProductController extends Controller
         $flash_message = 'Product Deleted!';
         return redirect()->route('products.index', compact('flash_message'));
     }
+
+    public function search(Request $request)
+{
+    $searchText = $request->search;
+
+    // Perform the search query
+    $product = Product::where(function($query) use ($searchText) {
+            $query->where('name', 'LIKE', "%$searchText%")
+                ->orWhere('description', 'LIKE', "%$searchText%")
+                ->orWhere('price', 'LIKE', "%$searchText%")
+                ->orWhere('discount_price', 'LIKE', "%$searchText%")
+                ->orWhere('available_qte', 'LIKE', "%$searchText%");
+        })->get();
+
+    // Pass the search results to the index view
+    return view('admin.product.index', compact('product'));
+}
+
 }

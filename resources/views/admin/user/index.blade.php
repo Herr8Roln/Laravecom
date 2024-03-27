@@ -33,11 +33,8 @@
                             <div class="col-md-9">
                                 <div class="card">
                                     <br>
-                                    <div style="color: white;"="card-header">category</div>
+                                    <div style="color: white;"="card-header">Clients</div>
                                     <div class="card-body">
-                                        <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm" title="Add New category">
-                                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                                        </a>
                                         <br/>
                                         <br/>
                                         <div class="table-responsive">
@@ -64,20 +61,20 @@
                                                         <td>{{ $item->address }}</td>
                                                         <td>{{ $item->email_verified_at }}</td>
                                                         <td>
-                                                            @if($item->icon)
-                                                            <img src="{{ asset('storage/' . $item->profile_photo_path) }}" alt="Category Icon" width="50" height="50">
+                                                            @if($item->profile_photo_path)
+                                                            <img src="{{ asset('storage/' . $item->profile_photo_path) }}" alt="client Icon" width="50" height="50">
                                                             @else
                                                                 No Icon
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('categories.show', $item->id) }}" title="View category"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                            <a href="{{ route('categories.edit', $item->id) }}" title="Edit category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                            <a href="{{ route('user.show', $item->id) }}" title="View client"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                            <a href="{{ route('user.edit', $item->id) }}" title="Edit client"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                                            <form method="POST" action="{{ route('categories.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                            <form method="POST" action="{{ route('user.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 @method("DELETE")
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete category" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete client" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                                             </form>
                                                         </td>
                                                     </tr>

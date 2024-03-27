@@ -7,13 +7,14 @@
                 <h2 class="mb-4">Categories</h2>
                 <ul class="list-unstyled mb-auto">
                     @foreach($categories as $category)
-            <li class="mb-3">
-                <a href="#" style="text-decoration: none; color: black;">
+                    <li class="mb-3">
+                    <a href="{{ route('filter.products', ['category_id' => $category->id]) }}" style="text-decoration: none; color: black;">
                     <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" class="mr-2" style="max-width: 20px;">
                     {{ $category->name }}
-                </a>
-            </li>
-            @endforeach
+                    </a>
+                    </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>

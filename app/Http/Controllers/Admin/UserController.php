@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -16,38 +17,73 @@ class UserController extends Controller
     }
 
     // Show the form for creating a new resource.
-    public function create()
-    {
-        // Logic for creating a new user (if needed)
-    }
 
     // Store a newly created resource in storage.
-    public function store(Request $request)
-    {
-        // Logic for storing a new user (if needed)
-    }
 
-    // Display the specified resource.
-    public function show(User $user)
+    public function show($id)
     {
-        // Logic for showing a specific user (if needed)
+        // Fetch the user based on the provided ID
+        $user = User::findOrFail($id);
+
+        // Assuming you want to return a view with the user details
+        return view('admin.user.show', compact('user'));
     }
 
     // Show the form for editing the specified resource.
-    public function edit(User $user)
+    public function edit($id)
     {
-        // Logic for editing a specific user (if needed)
+        $user = User::find($id);
+        return view('admin.user.edit',compact('user'));
     }
 
     // Update the specified resource in storage.
     public function update(Request $request, User $user)
     {
-        // Logic for updating a specific user (if needed)
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'usertype' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'email_verified_at' => 'nullable|date',
+            'profile_photo_path' => 'nullable|image|max:2048', // Assuming profile_photo_path is the field for storing profile photo
+        ]);
+
+        // Update the user details
+        $user->update([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'usertype' => $validatedData['usertype'],
+            'phone' => $validatedData['phone'],
+            'address' => $validatedData['address'],
+            'email_verified_at' => $validatedData['email_verified_at'],
+        ]);
+
+        // Handle profile photo upload
+        if ($request->hasFile('profile_photo_path')) {
+            $profilePhotoPath = $request->file('profile_photo_path')->store('profile_photos', 'public');
+            $user->update(['profile_photo_path' => $profilePhotoPath]);
+        }
+
+        // Redirect back or wherever you wish
+        return redirect()->back()->with('success', 'User updated successfully');
     }
+
 
     // Remove the specified resource from storage.
     public function destroy(User $user)
     {
-        // Logic for deleting a specific user (if needed)
+        // Delete the user's profile photo if it exists
+        if ($user->profile_photo_path) {
+            File::delete(storage_path('app/public/' . $user->picture));
+
+        }
+
+        // Delete the user
+        $user->delete();
+
+        // Redirect back or wherever you wish
+        return redirect()->back()->with('success', 'User deleted successfully');
     }
 }

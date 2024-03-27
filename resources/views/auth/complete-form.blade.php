@@ -6,17 +6,17 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('google.store') }}">
             @csrf
-
+            <input type="hidden" name="google_id" value="{{ $user->google_id }}" />
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="$user->name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="$user->email" required autocomplete="username" />
             </div>
 
             <div class="mt-4">
@@ -66,12 +66,6 @@
                 </x-button>
             </div>
             <br>
-            <div style="text-align: center;">
-                <a href="{{ route('auth_google') }}" style="background-color: white; display: inline-block; padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; border: 2px solid #000;">
-                    <img src="{{ asset('home/images/7c50a10e-cropped-8aa171d5-new-google-favicon-512.png') }}" style="width: 20px; height: 20px; vertical-align: middle; display: inline-block;">
-                    <span style="margin-left: 10px; vertical-align: middle; display: inline-block;">Sign in with Google</span>
-                </a>
-            </div>
 
         </form>
 

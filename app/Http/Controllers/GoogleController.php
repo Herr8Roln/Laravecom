@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Laravel\Socialite\Facades\Socialite;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,9 @@ public function googlecallback()
                 'name' => $user->name,
                 'email' => $user->email, // Corrected the assignment operator here
                 'google_id' => $user->id,
-                'password' => encrypt('123456dummy')
+                'password' => encrypt('123456dummy'),
+                //Carbon is a popular PHP library used for working with dates and times. It provides an elegant and convenient API for manipulating dates
+
             ]);
 
             Auth::login($newUser);
@@ -37,7 +39,4 @@ public function googlecallback()
         dd($e->getMessage());
     }
 }
-
-
-
 }

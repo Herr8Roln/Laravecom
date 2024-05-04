@@ -20,14 +20,8 @@ class UserController extends Controller
 
     // Store a newly created resource in storage.
 
-    public function show($id)
-    {
-        // Fetch the user based on the provided ID
-        $user = User::findOrFail($id);
 
-        // Assuming you want to return a view with the user details
-        return view('admin.user.show', compact('user'));
-    }
+    
 
     // Show the form for editing the specified resource.
     public function edit($id)
@@ -86,4 +80,23 @@ class UserController extends Controller
         // Redirect back or wherever you wish
         return redirect()->back()->with('success', 'User deleted successfully');
     }
+    public function search(Request $request)
+    {
+        // Access the specific query parameter from the InputBag object
+        $searchText = $request->query('search');
+
+        // Use query builder with dynamic 'orWhere' clauses for better readability
+        $users = User::where(function($query) use ($searchText) {
+            $query->where('name', 'LIKE', "%$searchText%")
+                  ->orWhere('email', 'LIKE', "%$searchText%")
+                  ->orWhere('phone', 'LIKE', "%$searchText%")
+                  ->orWhere('address', 'LIKE', "%$searchText%");
+        })
+        ->get();
+
+        return view('admin.user.index', compact('users'));
+    }
+
+
+
 }

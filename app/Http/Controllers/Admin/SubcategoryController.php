@@ -44,12 +44,6 @@ class SubcategoryController extends Controller
             ->with('success', 'Subcategory created successfully.');
     }
 
-    public function show($id)
-{
-
-    $subcategory = Subcategory::findOrFail($id);
-    return view('admin.subcategory.show', compact('subcategory',));
-}
 
 
 public function edit($id)
@@ -96,5 +90,19 @@ public function edit($id)
         return view('admin.subcategory.dropdown', compact('subcategory'));
 
     }
+    public function search(Request $request)
+    {
+        $searchText = $request->input('query');
+
+        // Use query builder with dynamic 'orWhere' clauses for better readability
+        $subcategories = Subcategory::where(function($query) use ($searchText) {
+                $query->where('name', 'LIKE', "%$searchText%");
+            })
+            ->get();
+
+        return view('admin.subcategory.index', compact('subcategories'));
+    }
+
+
 
 }

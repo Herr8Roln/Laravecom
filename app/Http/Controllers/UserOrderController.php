@@ -55,5 +55,19 @@ class UserOrderController extends Controller
             // Redirect back with a success message
             return redirect()->back()->with('success', 'Order canceled successfully.');
         }
+        public function datasearch(Request $request) {
+            $searchText = $request->search;
 
-}
+            // Use query builder with dynamic 'orWhere' clauses for better readability
+            $order = order::where(function($query) use ($searchText) {
+                    $query->where('name', 'LIKE', "%$searchText%")
+                        ->orWhere('phone', 'LIKE', "%$searchText%")
+                        ->orWhere('product_title', 'LIKE', "%$searchText%");
+                })
+                ->get();
+
+            return view('home.order.index', compact('order'));
+        }
+    }
+
+

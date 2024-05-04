@@ -20,7 +20,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                             <div class="col-md-8">
-                                <form action="{{  route('order_search') }}" method="GET">
+                                <form action="{{  route('order-search') }}" method="GET">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" name="search" placeholder="Search For Something" aria-label="Search" aria-describedby="button-addon2">
                                         <button class="btn btn-outline-primary" type="submit" id="button-addon2" style="height: 38px;">Search</button>

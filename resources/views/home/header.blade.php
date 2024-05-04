@@ -24,11 +24,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('contact')}}" >Contact</a>
                     </li>
-                    <form class="form-inline" id="shopping_cart">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
+                    
 
                     @if (Route::has('login'))
                             @auth
@@ -38,12 +34,11 @@
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="{{ route('redirect') }}">Dashboard</a>
-                                        <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
-                                        @if(app('App\Http\Controllers\HomeController')->user())
+                                        <a class="dropdown-item" href="{{ route('redirect') }}">Home</a>
+                                        <a class="dropdown-item" href="{{ route('profile.show') }}">My profile</a>
                                             <a class="dropdown-item" href="{{ route('carts.index') }}">My Cart</a>
                                             <a class="dropdown-item" href="{{ route('order.index') }}">My Orders</a>
-                                        @endif<a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>

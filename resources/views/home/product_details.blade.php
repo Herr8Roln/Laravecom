@@ -55,7 +55,7 @@
                                     ${{ $product->price }}
                                 </h6>
                             @endif
-                            <h6>Product Category: <img src="{{ asset('storage/' . $product->category->icon) }}" alt="" style="max-width: 50px; max-height: 50px;"> {{ $product->category->name }}</h6>
+                            <h6>Product Category: <img src="{{ asset('storage/' . $product->subcategory->picture) }}" alt="" style="max-width: 50px; max-height: 50px;"> {{ $product->subcategory->name }}</h6>
                             <h6>Product Details: {{ $product->description }}</h6>
                         </div>
                         <div class="col-md-4">

@@ -34,6 +34,7 @@ class HomeController extends Controller
         $categories = Category::all();
 
         if ($usertype == '1') {
+
             // Counting directly from the database without retrieving all records
             $total_product = product::count();
             $total_order = order::count();
@@ -41,11 +42,11 @@ class HomeController extends Controller
 
             // Using sum() to calculate total revenue directly in the database
             $total_revenue = order::sum('price');
-
+            $orders = Order::orderByDesc('created_at')->take(3)->get(['price', 'updated_at']);
             // Counting specific conditions directly in the database
             $total_delivered = order::where('delivery_status', 'delivered')->count();
             $total_processing = order::where('delivery_status', 'processing')->count();
-            return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing','categories'));
+            return view('admin.home', compact('total_product', 'total_order', 'total_user', 'total_revenue', 'total_delivered', 'total_processing','categories','orders'));
         }
         else
         {
@@ -180,19 +181,20 @@ public function add_reply(Request $request) //works fine
 }
 public function product_search(Request $request) //works fine
 {
-    $categories = Category::all();
+
     $reply = Reply::all();
     $comment=Comment::orderby('id', 'desc')->get();
     //search process
     $search_text=$request->search;
     $product = Product::where('name', 'LIKE', "%$search_text%")
-    ->orWhereHas('category', function($query) use ($search_text) {
+    ->orWhereHas('subcategory', function($query) use ($search_text) {
         $query->where('name', 'LIKE', "%$search_text%"); })->paginate(10);
         // this research with % might cause confusion like men and women
-    return view('home.userpage', compact('product','reply','comment','categories'));
+    return view('home.userpage', compact('product','reply','comment'));
 }
 public function product() //works fine
 {
+
     $product = Product::paginate(10);
     $reply = Reply::all();
     $comment=Comment::orderby('id', 'desc')->get();
@@ -201,6 +203,7 @@ public function product() //works fine
 }
 public function search_product(Request $request) //works fine
 {
+
     $reply = Reply::all();
     $comment=Comment::orderby('id', 'desc')->get();
     //search process
@@ -237,7 +240,6 @@ public function about() //works fine
 {
     return view('home.about');
 }
-
 }
 
 

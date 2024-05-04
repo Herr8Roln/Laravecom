@@ -21,10 +21,10 @@
         @if(session()->has('message'))
         <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-        {{session()->get('message')}}
+        {{ session()->get('message') }}
         </div>
         @endif
-        <div class="main-panel" style="align: center">
+        <div class="main-panel" style="text-align: center;">
             <div class="content-wrapper">
                 <div class="div_center">
                     <div class="container">
@@ -34,7 +34,7 @@
                                     <div class="card-header">Products</div>
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
-                                            <form id="products.search" method="GET">
+                                            <form method="GET" action="{{ route('products.search') }}">
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" id="searchInput" name="search" placeholder="Search For Something" aria-label="Search" aria-describedby="button-addon2">
                                                     <button type="submit" class="btn btn-outline-primary" id="searchButton">Search</button>
@@ -86,7 +86,6 @@
                                                             @else
                                                             No Category Icon
                                                             @endif
-
                                                         </td>
                                                         <td>
                                                             @if($product->subcategory && $product->subcategory->picture)
@@ -96,13 +95,11 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('products.show', $product->id) }}" title="View product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                            <a href="{{ route('products.edit', $product->id) }}" title="Edit product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
+                                                                    <a href="{{ route('products.edit', $product->id) }}" title="Edit product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                                             <form method="POST" action="{{ route('products.destroy', $product->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 @method("DELETE")
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete product" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                                             </form>
                                                         </td>
                                                     </tr>

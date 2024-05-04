@@ -30,6 +30,16 @@
                 <div class="div_center">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{ route('categories.search') }}" method="GET">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="query" class="form-control" placeholder="Search categories" value="{{ request()->input('query') }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="col-md-9">
                                 <div class="card">
                                     <br>
@@ -63,7 +73,7 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('categories.show', $item->id) }}" title="View category"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                            
                                                             <a href="{{ route('categories.edit', $item->id) }}" title="Edit category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                                             <form method="POST" action="{{ route('categories.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">

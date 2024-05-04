@@ -4,18 +4,17 @@
         <!-- Sidebar with categories -->
         <div class="col-md-3">
             <div class="sidebar d-flex flex-column h-100">
-                <h2 class="mb-4">Categories</h2>
-                <ul class="list-unstyled mb-auto">
+                <h2 class="mb-4"><b>Categories</b></h2>
+                <div class="list-group">
                     @foreach($categories as $category)
-                    <li class="mb-3">
-                    <a href="{{ route('filter.products', ['category_id' => $category->id]) }}" style="text-decoration: none; color: black;">
-                    <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" class="mr-2" style="max-width: 20px;">
-                    {{ $category->name }}
+                    <a href="{{ route('filter.products', ['category_id' => $category->id]) }}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" class="mr-2" style="max-width: 25px; max-height: 25px;">
+                            <h5 class="mb-1">{{ $category->name }}</h5>
+                        </div>
                     </a>
-                    </li>
                     @endforeach
-
-                </ul>
+                </div>
             </div>
         </div>
         <h

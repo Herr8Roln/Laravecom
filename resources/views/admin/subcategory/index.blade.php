@@ -30,6 +30,15 @@
                 <div class="div_center">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{ route('subcategories.search') }}" method="GET">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="query" class="form-control" placeholder="Search subcategories" value="{{ request()->input('query') }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
                             <div class="col-md-9">
                                 <div class="card">
                                     <br>
@@ -65,9 +74,7 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('subcategories.show', $subcategory->id) }}" title="View Subcategory"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                                             <a href="{{ route('subcategories.edit', $subcategory->id) }}" title="Edit Subcategory"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
                                                             <form method="POST" action="{{ route('subcategories.destroy', $subcategory->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 @method("DELETE")
                                                                 @csrf

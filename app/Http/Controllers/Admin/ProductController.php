@@ -45,12 +45,6 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with("flash_message");
     }
 
-    public function show($id)
-    {
-        $product = Product::find($id);//Eloquent ORM (Object-Relational Mapping)
-        return view('admin.product.show', compact('product'));
-    }
-
     public function edit($id)
     {
         $product = Product::find($id);
@@ -92,21 +86,16 @@ class ProductController extends Controller
         return redirect()->route('products.index', compact('flash_message'));
     }
 
-    public function search(Request $request)
+    public function search(Request $request) //works fine
 {
-    $searchText = $request->search;
-
-    // Perform the search query
-    $product = Product::where(function($query) use ($searchText) {
-            $query->where('name', 'LIKE', "%$searchText%")
-                ->orWhere('description', 'LIKE', "%$searchText%")
-                ->orWhere('price', 'LIKE', "%$searchText%")
-                ->orWhere('discount_price', 'LIKE', "%$searchText%")
-                ->orWhere('available_qte', 'LIKE', "%$searchText%");
-        })->get();
-
-    // Pass the search results to the index view
+    //search process
+    $search_text=$request->search;
+    $product = Product::where('name', 'LIKE', "%$search_text%")
+    ->orWhereHas('subcategory', function($query) use ($search_text) {
+        $query->where('name', 'LIKE', "%$search_text%"); })->paginate(10);
+        // this research with % might cause confusion like men and women
     return view('admin.product.index', compact('product'));
 }
+
 
 }

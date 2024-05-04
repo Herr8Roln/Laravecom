@@ -50,15 +50,6 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
-
-
-    public function show($id)
-    {
-        $category = Category::find($id); //Eloquent ORM (Object-Relational Mapping)
-        return view('admin.category.show',compact('category'));
-    }
-
-
     public function edit($id)
     {
         $category = Category::find($id);
@@ -122,4 +113,19 @@ class CategoryController extends Controller
         $category = Category::all();
         return view('admin.category.dropdown', compact('category'));
     }
+    public function search(Request $request)
+{
+    $searchText = $request->query('query'); // Use query() method to access query parameters
+
+    // Use query builder with dynamic 'where' clauses for better readability
+    $category = Category::where(function($query) use ($searchText) {
+        $query->where('name', 'LIKE', "%$searchText%");
+    })
+    ->get();
+
+    return view('admin.category.index', compact('category'));
+}
+
+
+
 }

@@ -85,7 +85,7 @@ class OrderController extends Controller
         // Fetch data for the PDF
         $order = Order::findOrFail($id);
 
-        // Create an instance of TCPDF
+        // Create an instance of TCPDF : free and open source software PHP class for generating PDF documents.
         $pdf = new \TCPDF();
 
         // Set document information
@@ -147,8 +147,8 @@ class OrderController extends Controller
         $details = [
             'greeting' => $request->greeting,
             'firstline' => $request->firstline,
-            'body' => $request->body,  // Fix: Change '>=' to '='
-            'button' => $request->button,  // Fix: Change '>=' to '='
+            'body' => $request->body,
+            'button' => $request->button,
             'url' => $request->url,
             'lastline' => $request->lastline,
         ];
@@ -170,6 +170,4 @@ class OrderController extends Controller
 
         return view('admin.order.index', compact('orders'));
     }
-
-
 }

@@ -30,6 +30,17 @@
                 <div class="div_center">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{ route('users.search') }}" method="GET">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="search" class="form-control" placeholder="Search users" value="{{ request()->input('search') }}">
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="col-md-9">
                                 <div class="card">
                                     <br>
@@ -68,7 +79,7 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('user.show', $item->id) }}" title="View client"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+
                                                             <a href="{{ route('user.edit', $item->id) }}" title="Edit client"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                                             <form method="POST" action="{{ route('user.destroy', $item->id) }}" accept-charset="UTF-8" style="display:inline">

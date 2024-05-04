@@ -52,25 +52,32 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         abort(403, 'Unauthorized action.');
     }], function () {
+        //this space for authenticated admin routes
         // Categories CRUD
-        Route::resource('categories', CategoryController::class);
-        Route::resource('/subcategories', SubcategoryController::class);
-        Route::resource('users', UserController::class);
+        Route::resource('categories', CategoryController::class)->except('show');
+        Route::resource('/subcategories', SubcategoryController::class)->except('show');
+        Route::resource('users', UserController::class)->except('show');
 
 
        // Products CRUD
-        Route::resource('products', ProductController::class);
+        Route::resource('products', ProductController::class)->except('show');
         // Order CRUD
         Route::resource('orders', OrderController::class);
+
         Route::put('/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
         Route::get('/print_pdf/{id}', [OrderController::class, 'print_pdf'])->name('print_pdf');
         Route::get('/send_email/{id}', [OrderController::class, 'send_email'])->name('send_email');
         Route::post('/send_user_email/{id}', [OrderController::class, 'send_user_email'])->name('send_user_email');
+        Route::get('/categories/search', [CategoryController::class, 'search'])->name('categories.search');
         Route::get('/order_search', [OrderController::class, 'datasearch'])->name('order_search');
+
         Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+        Route::get('/subcategories/search', [SubcategoryController::class, 'search'])->name('subcategories.search');
+        Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
+
     });
 });
-
+        //the space for authenticated user routes
 Route::resource('carts', CartController::class)->middleware('auth')->except('store');
 Route::resource('order', UserOrderController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
@@ -90,7 +97,7 @@ Route::get('/filter-products', [HomeController::class, 'filterProducts'])->name(
 
 Route::controller(HomeController::class)->group(function() {
     Route::get('/cash_order', 'cash_order')->name('cash.order')->middleware('auth');
-
+    Route::get('/order-search', [UserOrderController::class, 'datasearch'])->name('order-search');
     Route::get('/stripe/{totalPrice}', 'stripe')->name('stripe')->middleware('auth');
     Route::post('stripe/{totalPrice}','stripePost')->name('stripe.post')->middleware('auth');
     route::get('auth/google', [GoogleController::class, 'googlepage'])->name('auth_google');
